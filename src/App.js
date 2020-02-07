@@ -3,37 +3,15 @@ import './App.scss';
 import HeaderBusqueda from './Header/HeaderBusqueda/HeaderBusqueda';
  
 
-<<<<<<< HEAD
 class App extends Component {
   render(){
      return (
       <div className="App">
-        <HeaderBusqueda />
+        
       </div>
     );
   }
  
-=======
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and Natalia to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
->>>>>>> 7de9a384e371a40368af859e9e69d572dafe94c4
 }
 
 export default App;
