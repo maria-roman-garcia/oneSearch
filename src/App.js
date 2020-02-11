@@ -1,14 +1,21 @@
 import React, {Component} from 'react';
+import { Container, Row} from 'reactstrap';
 import './App.scss';
-import HeaderBusqueda from './Header/HeaderBusqueda/HeaderBusqueda';
+//import Menu from './Navbar/Menu';
+import Navbar from './Navbar/Navbar'
+
+
+
+
  
 
 class App extends Component {
   render(){
      return (
-      <div className="App">
-        
-      </div>
+      <Container fluid={true}>
+        <Navbar />
+    </Container>
+      
     );
   }
  
