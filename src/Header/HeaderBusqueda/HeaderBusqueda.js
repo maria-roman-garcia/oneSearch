@@ -1,6 +1,6 @@
 import React from 'react';
 import {Button} from 'reactstrap';
-import './HeaderBusqueda.css';
+import './HeaderBusqueda.scss';
 
 
 //Clase Header
