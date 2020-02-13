@@ -5,6 +5,7 @@ import HeaderBusqueda from './Header/HeaderBusqueda/HeaderBusqueda';
 import FuentesInformacion from './FuentesInformacion/FuentesInformacion';
 //import Menu from './Navbar/Menu';
 import Navbar from './Navbar/Navbar'
+
  
 
 class App extends Component {
