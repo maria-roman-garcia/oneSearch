@@ -1,0 +1,16 @@
+#HeaderPalabras{
+    display: flex;
+    background-color: #CCE9F1;
+}
+
+.MyButton2{
+    width: 200px;
+    margin-top: 40px;
+    border: none;
+    background-color: white;
+    border-radius: 20px;
+    margin-left: 60px;
+}
+
+
+

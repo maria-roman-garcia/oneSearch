@@ -1,25 +1,25 @@
 import React from 'react';
 import {Button} from 'reactstrap';
-import './HeaderBusqueda.scss';
+import './HeaderBusqueda.css';
 
 
 //Clase Header
 const HeaderBusqueda = ()=>{
      
         return(
-            <div className="Container">
-                <div className="col-md-4">
+            <div className="row" id="HeaderBusqueda">
+                <div className="col-12 col-md-4 justify-content">
                     <p className="Frase">¿Qué palabra quieres buscar?</p>
                 </div>
                 
-                <div className="col-md-4">
-                    <form method="GET" action="#">
-                        <input type="search" placeholder="#" className="BarraBusqueda"/>
-                    </form>
+                <div className="col-12 col-md-4 justify-content">
+                    
+                    <input type="search" placeholder="#" className="BarraBusqueda"/>
+                    
                 </div>
                 
-                <div className="col-md-4">
-                    <input type="button" value="Buscar" className="MyButton"></input> 
+                <div className="col-12 col-md-4 justify-content">
+                    <button className="MyButton" onclick="myFunction()">Buscar</button>
                 </div>
                     
             </div>
