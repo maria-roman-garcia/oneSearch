@@ -1,30 +1,70 @@
 import React, {Component} from 'react';
 import './App.scss';
 import HeaderBusqueda from './Header/HeaderBusqueda/HeaderBusqueda';
-<<<<<<< HEAD
-import FuentesInformacion from './FuentesInformacion/FuentesInformacion';
-//import Menu from './Navbar/Menu';
-import Navbar from './Navbar/Navbar'
+import Dropdown from './Dropdown/Dropdown';
+import {FaSlackHash} from "react-icons/fa";
+// import HeaderPalabras from './Header/HeaderPalabras/HeaderPalabras';
 
-=======
-import HeaderPalabras from './Header/HeaderPalabras/HeaderPalabras';
+class App extends React.Component {
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCoffee } from '@fortawesome/free-solid-svg-icons'
->>>>>>> 76298aef66838e5308421c4eec37ec1d60c289ec
- 
+  constructor(props) {
+    super(props);
+    this.state = {
+      wordSearch: [],
+      numberAPISelected: undefined,
+      apisList: [{
+          id: 0,
+          name: 'youtube',
+          isDropdown: false
+        }, {
+          id: 1,
+          name: 'wikipedia',
+          isDropdown: false
+        }, {
+          id: 2,
+          name: 'twitter',
+          isDropdown: false
+        }, {
+          id: 3,
+          name: 'Periodicos',
+          isDropdown: true,
+          dropdownList: [{
+            id: 4,
+            name: 'periodico 1',
+          }, {
+            id: 5,
+            name: 'periodico 2',
+          }, {
+            id: 6,
+            name: 'periodico 3',
+          }]
+        }
+      ]
+    }
+  }
 
-class App extends Component {
-  render(){
-     return (
-      <div className="App">
-        <HeaderBusqueda />
-         <HeaderPalabras />
-       
+  selectAPI = (numberAPISelected) => {
+    this.setState({
+      numberAPISelected: numberAPISelected
+    })
+  }
+
+  render() {
+    return ( 
+      <div className = "App">
+
+        <HeaderBusqueda/>
+        <h3> Lets go for a < FaSlackHash/></h3> 
+        <Dropdown 
+          apisList = {this.state.apisList}    
+          selectAPI = {this.selectAPI}
+          numberAPISelected = {this.state.numberAPISelected}
+        />
+
       </div>
     );
-  }
- 
+  };
+
 }
 
 export default App;
