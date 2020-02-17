@@ -13,7 +13,7 @@ class Dropdown extends React.Component {
 
     // funcion que devuelve el render de las opciones (youtube, wiki...)
     renderApiButton = (element) => {
-        if (element.isDropdown){
+        if (element.isDropdown) {
 
             let listaPeriodicos = element.dropdownList.map(periodico => {return (
                 
@@ -30,7 +30,6 @@ class Dropdown extends React.Component {
                 <div>
                     <div className="col-3" onClick={()=> this.setState({dropdownOpen : !this.state.dropdownOpen}) } style={{color:element.dropdownList.some(periodico => {return(periodico.id === this.props.numberAPISelected)})?'red':'blue'}}>{element.name}</div>
                     <div>
-                        
                         {this.state.dropdownOpen && listaPeriodicos}
                     </div>
                 </div>
