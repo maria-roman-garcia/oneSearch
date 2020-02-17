@@ -23,7 +23,7 @@ const HeaderBusqueda = ()=>{
                 </div>
                 
                 <div className="col-12 col-md-4 justify-content">
-                    <button className="MyButton" onclick="myFunction()">Buscar</button>
+                    <button className="MyButton" onClick="myFunction()">Buscar</button>
                 </div>
                 
             </div>
