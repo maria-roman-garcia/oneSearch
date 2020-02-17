@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import './App.css';
+import './App.scss';
+import NavBar from './Navbar/Navbar'
 import HeaderBusqueda from './Header/HeaderBusqueda/HeaderBusqueda';
 import Dropdown from './Dropdown/Dropdown';
-import {FaSlackHash} from "react-icons/fa";
-// import HeaderPalabras from './Header/HeaderPalabras/HeaderPalabras';
+
 
 class App extends React.Component {
 
@@ -52,9 +52,9 @@ class App extends React.Component {
   render() {
     return ( 
       <div className = "App">
-
-        <HeaderBusqueda/>
-        <h3> Lets go for a < FaSlackHash/></h3> 
+        <NavBar />
+        <HeaderBusqueda />
+        
         <Dropdown 
           apisList = {this.state.apisList}    
           selectAPI = {this.selectAPI}
