@@ -4,7 +4,6 @@ import NavBar from './Navbar/Navbar'
 import HeaderBusqueda from './Header/HeaderBusqueda/HeaderBusqueda';
 import Dropdown from './Dropdown/Dropdown';
 
-
 class App extends React.Component {
 
   constructor(props) {
@@ -54,7 +53,6 @@ class App extends React.Component {
       <div className = "App">
         <NavBar />
         <HeaderBusqueda />
-        
         <Dropdown 
           apisList = {this.state.apisList}    
           selectAPI = {this.selectAPI}
