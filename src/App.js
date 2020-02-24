@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './App.scss';
 import SearchedComponent from './SearchedComponent/SearchedComponent'
+import Home from './Home/Home'
 
 class App extends React.Component {
 
@@ -49,7 +50,7 @@ class App extends React.Component {
   render() {
     return ( 
       <div className = "App">
-        <SearchedComponent/>
+        <Home/>
       </div>
     );
   };
