@@ -79,7 +79,6 @@ class SearchedComponent extends Component {
             console.log("Soy una letra:" + this.state.inputPalabra);
             
             return ( 
-                <div className = "App">
                     < div className = "container-fluid" >
                         <div className="row justify_center">
                             <img src={logo} className="logo" alt="logo"/>
@@ -111,8 +110,7 @@ class SearchedComponent extends Component {
                             <p> {this.showTitles()} </p> 
                         </div>
                     </div>
-                    {/* <p> {this.state.mensajeUsuario} </p> */}
-                </div >
+                    // {/* <p> {this.state.mensajeUsuario} </p> */}
             );
         }
 

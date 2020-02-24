@@ -1,9 +1,6 @@
 import React, {Component} from 'react';
 import './App.scss';
-// import NavBar from './Navbar/Navbar'
-// import HeaderBusqueda from './Header/HeaderBusqueda/HeaderBusqueda';
-// import Dropdown from './Dropdown/Dropdown';
-import Wikipedia from './Wikipedia/Wikipedia'
+import SearchedComponent from './SearchedComponent/SearchedComponent'
 
 class App extends React.Component {
 
@@ -52,14 +49,7 @@ class App extends React.Component {
   render() {
     return ( 
       <div className = "App">
-        {/* <NavBar />
-        <HeaderBusqueda />
-        <Dropdown 
-          apisList = {this.state.apisList}    
-          selectAPI = {this.selectAPI}
-          numberAPISelected = {this.state.numberAPISelected}
-        /> */}
-        <Wikipedia/>
+        <SearchedComponent/>
       </div>
     );
   };
