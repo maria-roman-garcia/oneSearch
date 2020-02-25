@@ -1,56 +1,70 @@
-import React, {Component} from "react";
-import logo from '../img/logo.png'
+import React, { Component } from "react";
+import logo from '../img/logo.png';
+import './Home.scss';
+import { faHeart, faSearch, faLightbulb } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 //NOTA: los metodos() son funciones pero dentro de objetos{}. Por ejemplo, dentro de un array muchas veces usamos metodos como .pop() porque es una funcion
 //dentro de un objeto array (typeof array = objeto). En el mismo caso de la array, length es una propiedad, no un metodo.
 
 class Home extends Component {
+
     state = {
-        mensajeUsuario: "",
-        infoLlamadaApi: [],
         inputPalabra: ""
-        // llamadaApiFoto: ""
     };
 
-    
     async changeInputText(info) {
         await this.setState({
-             inputPalabra: info
+            inputPalabra: info
         });
-        }
-
-        render() {
-            
-            return ( 
-                    < div className = "container-fluid" >
-                        <div className="row justify_center">
-                            <img src={logo} className="logo" alt="logo"/>
-                        </div>
-                        <div className="row justify_center">
-                            <input onChange = {
-                            event => this.changeInputText(event.target.value)
-                            }type = "text" id="input"/>
-                        </div>
-                        <div className="row justify_center">
-                            <button onClick = {
-                            event => this.makeApiCall()
-                            }>ENTER</button> 
-                        </div>
-                        <div className="row justify_center">
-                            <div className="col-4 justify_center">
-                                <p>Primera instruccion</p>
-                            </div>
-                            <div className="col-4 justify_center">
-                                <p>Segunda instruccion</p>
-                            </div>
-                            <div className="col-4 justify_center">
-                                <p>Tercera instruccion</p>
-                            </div>
-                        </div>
-                    </div>
-            );
-        }
-
     }
 
-    export default Home;
+    render() {
+
+        return (
+            < div className="container-fluid" >
+                <div className="row justify_center">
+                    <img src={logo} className="logo" alt="logo" />
+                </div>
+                <div className="row justify_center">
+                    <input onChange={
+                        event => this.changeInputText(event.target.value)
+                    } type="text" id="input" />
+                </div>
+                <div className="row justify_center">
+                    <link to="/" label="ENTER"/>
+                    {/* <link href="/">ENTER</link> */}
+                </div>
+                <div className="row">
+                    <div className="col-12 col-md-4">
+                        <div className="row icono justify_center">
+                            <FontAwesomeIcon icon={faHeart} className="Icono fa-3x"/>
+                        </div>
+                        <div className="row padding">
+                            <p>¡Bienvenid@ a OneSearch! La pagina donde podrás encontrar y comparar información en diferentes fuentes como Wikipedia o Twitter.</p>
+                        </div>
+                    </div>
+                    <div className="col-12 col-md-4">
+                        <div className="row icono justify_center">
+                            <FontAwesomeIcon icon={faSearch} className="Icono fa-3x" />
+                        </div>
+                        <div className="row padding">
+                            <p>¿Estás preparad@? Introduce una palabra en el buscador, y preparate para navegar!</p>
+                        </div>
+                    </div>
+                    <div className="col-12 col-md-4">
+                        <div className="row icono justify_center">
+                            <FontAwesomeIcon icon={faLightbulb} className="Icono fa-3x" />
+                        </div>
+                        <div className="row padding">
+                            <p>Estamos en pleno desarrollo. Nos encanta aprender, asi que si tienes buenas ideas no dudes en sugerir nuevos cambios en nuestro Git. (Lo encontrarás en el menu).</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
+}
+
+export default Home;
