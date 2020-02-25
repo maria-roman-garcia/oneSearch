@@ -22,7 +22,7 @@ class Home extends Component {
     render() {
         // console.log(this.state.inputPalabra)
         return (
-            < div className="container-fluid" >
+            < div className="container-fluid home" >
                 <div className="row justify_center">
                     <img src={logo} className="logo" alt="logo" />
                 </div>

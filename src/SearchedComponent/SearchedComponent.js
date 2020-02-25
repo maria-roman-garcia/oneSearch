@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import './SearchedComponent.scss';
 import logo from '../img/logo.png'
+import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 //NOTA: los metodos() son funciones pero dentro de objetos{}. Por ejemplo, dentro de un array muchas veces usamos metodos como .pop() porque es una funcion
 //dentro de un objeto array (typeof array = objeto). En el mismo caso de la array, length es una propiedad, no un metodo.
@@ -80,39 +82,56 @@ class SearchedComponent extends Component {
         console.log(this.state.infoLlamadaApi);
 
         return (
-            < div className="container-fluid" >
-                <div className="row justify_center">
-                    <img src={logo} className="logo" alt="logo" />
+            <div className="container-fluid searchedComponent" >
+            {/* navbar con logo y menu */}
+                <div className="row align_center">
+                    <div className="col-6 padding">
+                        <img src={logo} className="logo" alt="logo" />
+                    </div>
+                    <div className="col-6 Menu padding">
+                        <FontAwesomeIcon icon={faBars} className="Icono fa-3x" />
+                    </div>
                 </div>
-                <div className="row justify_center">
-                    <input onChange={
+                {/* input y boton de buscar */}
+                <div className="row">
+                    <div className="col-12 justify_center">
+                         <input onChange={
                         event => this.changeInputText(event.target.value)
-                    } type="text" id="input" />
-                </div>
-                <div className="row justify_center">
-                    <button onClick={
-                        event => this.makeApiCall()
-                    }>ENTER</button>
-                </div>
-                <div className="row justify_center">
-                    <div className="col-4 justify_center">
-                        <p>Primera instruccion</p>
+                    } type="text" />
                     </div>
-                    <div className="col-4 justify_center">
-                        <p>Segunda instruccion</p>
-                    </div>
-                    <div className="col-4 justify_center">
-                        <p>Tercera instruccion</p>
+                    <div className="col-12 justify_center">
+                        <button onClick={
+                            event => this.makeApiCall()
+                        }>ENTER</button>
                     </div>
                 </div>
+
+                {/* < div className="row justify_center align_center">
+                    <div className="col-12 col-md-2">
+                        <img src={logo} className="logo" alt="logo" />
+                    </div>
+                    <div className="col-12 col-md-7">
+                        <input onChange={
+                            event => this.changeInputText(event.target.value)
+                        } type="text" id="input" />
+                        <button onClick={
+                            event => this.makeApiCall()
+                        }>ENTER</button>
+                    </div>
+                    < div className="col-12 col-md-3" >
+                        <p>Menu</p>
+                    </div>
+                </div> */}
+
+
                 <div className="row">
                     {/* <img src={this.state.llamadaApiFoto} alt={this.state.inputPalabra}></img> */}
                     {/* <p>{this.state.llamadaApiFoto}</p> */}
                     <p> {this.showTitles()} </p>
+                    {/* <p> {this.state.mensajeUsuario} </p> */}
                 </div>
             </div>
-            // {/* <p> {this.state.mensajeUsuario} </p> */}
-        );
+        )
     }
 
 }
