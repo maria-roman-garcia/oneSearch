@@ -1,26 +1,98 @@
-body{
-    background: linear-gradient(to bottom, #D5DEE7 0%, #E8EBF2 50%, #E2E7ED 100%),
-    linear-gradient(to bottom, rgba(0, 0, 0, 0.02) 50%, rgba(255, 255, 255, 0.02) 61%, rgba(0, 0, 0, 0.02) 73%),
-    linear-gradient(33deg, rgba(255, 255, 255, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%);
-    background-blend-mode: normal,
-    color-burn;
-    height: 100vw;
+// TAMAÑOS
+
+$breakpoint-xs: 360px;
+$breakpoint-sm: 767px;
+$breakpoint-md: 1023px;
+$breakpoint-lg: 1360px;
+
+@mixin media($media) {
+    @if $media==xs {
+        @media (max-width: $breakpoint-sm) {
+            @content;
+        }
+    }
+
+    @else if $media==sm {
+        @media (min-width: $breakpoint-sm) and (max-width: $breakpoint-md) {
+            @content;
+        }
+    }
+
+    @else if $media==md {
+        @media (min-width: $breakpoint-md) and (max-width: $breakpoint-lg) {
+            @content;
+        }
+    }
+
+    @else if $media==lg {
+        @media (min-width: $breakpoint-lg) {
+            @content;
+        }
+    }
 }
 
-.justify_center{
+// VARIABLES
+
+$colorAzulOscuro : #4793B2;
+$colorAzulClaro : #CDEBF3;
+$colorNaranja : #F4960E;
+$smallScreen : 500px;
+
+// ALINEAR, MARGENES Y PADDINGS
+
+.justify_center {
     display: flex;
     justify-content: center;
 }
 
-#input{
-    padding: 20px;
-    border-radius: 50px;
-    border-style: none;
-    margin: 3rem;
-    width: 32rem;
+.align_center {
+    display: flex;
+    align-items: center;
 }
 
-img{
-    width: 50rem;
+.App{
+    display: flex;
+    align-items: start;
 }
 
+.searchedComponent {
+
+    margin-top: 4rem;
+
+    & input {
+        padding: 20px;
+        border-radius: 50px;
+        border-style: none;
+        margin: 3rem;
+        width: 80%;
+        height: 3rem;
+    }
+
+    & .logo {
+        width: 8rem;
+    }
+
+    & button {
+        background-color: $colorAzulOscuro;
+        color: $colorAzulClaro;
+        padding: 5px 50px 5px 50px;
+        border-radius: 20px;
+        border-style: none;
+        margin-bottom: 3rem;
+    }
+
+    & .Menu {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    & .Icono {
+        color: $colorNaranja;
+    }
+    & .padding {
+        padding: 0rem 5rem 0rem 5rem;
+         @include media(xs) {
+            padding: 0rem 2rem 0rem 2rem;
+        }
+    }
+}
