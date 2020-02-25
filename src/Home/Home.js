@@ -29,11 +29,14 @@ class Home extends Component {
                 <div className="row justify_center">
                     <input onChange={
                         event => this.changeInputText(event.target.value)
-                    } type="text" id="input" />
+                    } type="text"/>
                 </div>
                 <div className="row justify_center">
-                    <link to="/" label="ENTER"/>
-                    {/* <link href="/">ENTER</link> */}
+                         {/* <link to="/"> */}
+                            <button type="button">
+                                ENTER
+                            </button>
+                        {/* </link> */}
                 </div>
                 <div className="row">
                     <div className="col-12 col-md-4">
