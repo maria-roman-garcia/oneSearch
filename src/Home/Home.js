@@ -20,7 +20,7 @@ class Home extends Component {
     }
 
     render() {
-
+        // console.log(this.state.inputPalabra)
         return (
             < div className="container-fluid" >
                 <div className="row justify_center">
