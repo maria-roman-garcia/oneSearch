@@ -15,10 +15,13 @@ class SearchedComponent extends Component {
         // llamadaApiFoto: ""
     };
 
-    showTitles = () => {
-        return this.state.infoLlamadaApi.map(elemento => <p> {
-            elemento.title
-        } </p>);
+    showItems = () => {
+        return this.state.infoLlamadaApi.map(elemento => 
+        <div>
+            <p>{elemento.title}</p>
+            <p>{elemento.snippet}</p>
+        </div>
+        );
     };
 
     makeApiCall = () => {
@@ -59,7 +62,7 @@ class SearchedComponent extends Component {
                         },
                         //El segundo argumento es una funcion call back function. Se va a ejecutar solo cuando el estado se termine de actualizar
                         () => {
-                            this.showTitles();
+                            this.showItems();
                         }
                     );
                 });
@@ -113,10 +116,7 @@ class SearchedComponent extends Component {
                 </div>
                 {/* Palabras encontradas */}
                 <div className="row">
-                    {/* <img src={this.state.llamadaApiFoto} alt={this.state.inputPalabra}></img> */}
-                    {/* <p>{this.state.llamadaApiFoto}</p> */}
-                    <p> {this.showTitles()} </p>
-                    {/* <p> {this.state.mensajeUsuario} </p> */}
+                    <p> {this.showItems()} </p>
                 </div>
             </div>
         )
