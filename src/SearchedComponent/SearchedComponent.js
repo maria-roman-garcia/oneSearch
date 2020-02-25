@@ -104,26 +104,14 @@ class SearchedComponent extends Component {
                             event => this.makeApiCall()
                         }>ENTER</button>
                     </div>
+                </div> 
+                {/* Div con la imagen de fondo + palabra de la busqueda */}
+                <div className="row divLlamadaApiFoto">
+                    <div className="filtro">
+                    <h1 className="palabraLlamadaApiFoto">{this.state.inputPalabra.toUpperCase()}</h1>
+                    </div>
                 </div>
-
-                {/* < div className="row justify_center align_center">
-                    <div className="col-12 col-md-2">
-                        <img src={logo} className="logo" alt="logo" />
-                    </div>
-                    <div className="col-12 col-md-7">
-                        <input onChange={
-                            event => this.changeInputText(event.target.value)
-                        } type="text" id="input" />
-                        <button onClick={
-                            event => this.makeApiCall()
-                        }>ENTER</button>
-                    </div>
-                    < div className="col-12 col-md-3" >
-                        <p>Menu</p>
-                    </div>
-                </div> */}
-
-
+                {/* Palabras encontradas */}
                 <div className="row">
                     {/* <img src={this.state.llamadaApiFoto} alt={this.state.inputPalabra}></img> */}
                     {/* <p>{this.state.llamadaApiFoto}</p> */}
