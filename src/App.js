@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 // import Home from './Home/Home';
 import './App.scss';
 import SearchedComponent from './SearchedComponent/SearchedComponent';
+import Home from './Home/Home'
 
 
 class App extends React.Component {
