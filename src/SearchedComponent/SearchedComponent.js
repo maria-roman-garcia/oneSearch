@@ -17,11 +17,11 @@ class SearchedComponent extends Component {
     };
 
     showItems = () => {
-        return this.state.infoLlamadaApi.map(elemento => 
-        <div>
-            <p>{elemento.title}</p>
-            <p>{elemento.snippet}</p>
-        </div>
+        return this.state.infoLlamadaApi.map(elemento =>
+            <div>
+                <p>{elemento.title}</p>
+                <p>{elemento.snippet}</p>
+            </div>
         );
     };
 
@@ -87,7 +87,7 @@ class SearchedComponent extends Component {
 
         return (
             <div className="container-fluid searchedComponent" >
-            {/* navbar con logo y menu */}
+                {/* navbar con logo y menu */}
                 <div className="row align_center">
                     <div className="col-6 padding">
                         <img src={logo} className="logo" alt="logo" />
@@ -99,30 +99,44 @@ class SearchedComponent extends Component {
                 {/* input y boton de buscar */}
                 <div className="row">
                     <div className="col-12 justify_center">
-                         <input onChange={
-                        event => this.changeInputText(event.target.value)
-                    } type="text" />
+                        <input onChange={
+                            event => this.changeInputText(event.target.value)
+                        } type="text" />
                     </div>
                     <div className="col-12 justify_center">
                         <button onClick={
                             event => this.makeApiCall()
                         }>ENTER</button>
                     </div>
-                </div> 
+                </div>
                 {/* Div con la imagen de fondo + palabra de la busqueda */}
                 <div className="row divLlamadaApiFoto">
                     <div className="filtro">
-                    <h1 className="palabraLlamadaApiFoto">{this.state.inputPalabra.toUpperCase()}</h1>
+                        <div className="filtroPalabra justify_center align_center">
+                            <h1 className="palabraLlamadaApiFoto">{this.state.inputPalabra.toUpperCase()}</h1>
+                        </div>
+                        <div className="row filtroMenu">
+                            <div className="col-4 justify_center selected align_center">
+                                <p>Wikipedia</p>
+                            </div>
+                            <div className="col-4 justify_center align_center">
+                                <p>Twitter</p>
+                            </div>
+                            <div className="col-4 justify_center align_center">
+                                <p>Otra</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
                 {/* Palabras encontradas */}
                 <div className="row">
                     <p> {this.showItems()} </p>
                 </div>
-                
+
                 <div className="row justify_center">
-                    <WikiCard/>
-                    <WikiCard/>
+                    <WikiCard />
+                    <WikiCard />
                 </div>
             </div>
         )

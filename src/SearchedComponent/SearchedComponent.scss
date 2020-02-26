@@ -103,17 +103,32 @@ $smallScreen : 500px;
         background-repeat: no-repeat;
         background-size: cover;
         position: relative;
-    }
-    & .filtro{
-        background-color: rgba(9, 23, 71, 0.63);
-        width: 100%;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    & .palabraLlamadaApiFoto{
-        color: $colorAzulClaro;
-        font-weight: bold;
+        & .filtro{
+            background-color: rgba(9, 23, 71, 0.63);
+            width: 100%;
+            height: 100%;
+            & .palabraLlamadaApiFoto{
+                color: $colorAzulClaro;
+                font-weight: bold;
+                display: flex;
+            }
+            & .filtroPalabra{
+                height: 18rem;
+            }
+            & .filtroMenu{
+                height: 2rem;
+                width: 100%;
+                background-color: rgba(9, 23, 71, 0.767);
+                color: white;
+                margin: 0;
+                p{
+                    margin: 0;
+                }
+
+                & .selected{
+                    background-color: $colorAzulOscuro;
+                }
+            }
+        }    
     }
 }
