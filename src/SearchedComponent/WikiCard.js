@@ -1,35 +1,28 @@
 import React from 'react';
-import './QuoteCard.scss';
+import './WikiCard.scss'
 
-class QuoteCard extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      favorite: false,
-    };
-  }
-  render() {
-    return (
-      <figure className="QuoteCard">
-        <img src={this.props.image} alt={this.props.character} />
-        <figcaption>
-          <blockquote>{this.props.quote}</blockquote>
-          <p>
-            <cite>{this.props.character}</cite>
-            <span
-              className={this.state.favorite ? 'is-favorite' : ''}
-              onClick={event => {
-                const newFavorite = !this.state.favorite;
-                this.setState({ favorite: newFavorite });
-              }}
-            >
-              &#9733;
-            </span>
-          </p>
-        </figcaption>
-      </figure>
-    );
-  }
+class WikiCard extends React.Component {
+
+    constructor(props) {
+        super(props)
+        this.state = {
+            titulo: this.props.inputPalabra
+        }
+    }
+
+
+
+    render() {
+        return (
+
+            <div className="carta col-11 col-md-5">
+                <h1 className="justify_center">{this.props.inputPalabra}</h1>
+                <p>Lorem jsniwvniepvnobvpwrbnipbnbpw</p>
+            </div>
+
+        )
+
+    }
 }
 
-export default QuoteCard;
+export default WikiCard;

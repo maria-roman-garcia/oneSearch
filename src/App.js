@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 // import SearchedComponent from './SearchedComponent/SearchedComponent'
 // import Home from './Home/Home';
 import './App.scss';
-import SearchedComponent from './SearchedComponent/SearchedComponent'
-import WikiCard from './SearchedComponent/WikiCard'
+import SearchedComponent from './SearchedComponent/SearchedComponent';
+
 
 class App extends React.Component {
 
@@ -13,7 +13,6 @@ class App extends React.Component {
       <div className = "App">
         {/* <Home/> */}
         <SearchedComponent/>
-        <WikiCard />
       </div>
     );
   };

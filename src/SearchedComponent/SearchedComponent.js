@@ -3,6 +3,7 @@ import './SearchedComponent.scss';
 import logo from '../img/logo.png'
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import WikiCard from './WikiCard'
 
 //NOTA: los metodos() son funciones pero dentro de objetos{}. Por ejemplo, dentro de un array muchas veces usamos metodos como .pop() porque es una funcion
 //dentro de un objeto array (typeof array = objeto). En el mismo caso de la array, length es una propiedad, no un metodo.
@@ -117,6 +118,11 @@ class SearchedComponent extends Component {
                 {/* Palabras encontradas */}
                 <div className="row">
                     <p> {this.showItems()} </p>
+                </div>
+                
+                <div className="row justify_center">
+                    <WikiCard/>
+                    <WikiCard/>
                 </div>
             </div>
         )
