@@ -55,17 +55,20 @@ $smallScreen : 500px;
     align-items: start;
 }
 
-.searchedComponent {
+ 
 
-    margin-top: 4rem;
+.searchedComponent {
+   & .navBar {
+       margin: 2rem 0;
+       align-items: center;
+   }
 
     & input {
         padding: 20px;
         border-radius: 50px;
         border-style: none;
-        margin: 3rem;
-        width: 80%;
-        height: 3rem;
+        width: 100%;
+        height: 2rem;
     }
 
     & .logo {
@@ -78,7 +81,7 @@ $smallScreen : 500px;
         padding: 5px 50px 5px 50px;
         border-radius: 20px;
         border-style: none;
-        margin-bottom: 3rem;
+        height: 2rem;
     }
 
     & .Menu {
@@ -94,6 +97,13 @@ $smallScreen : 500px;
          @include media(xs) {
             padding: 0rem 2rem 0rem 2rem;
         }
+    }
+    & .buttonDiv{
+        text-align: center;
+        margin: 1rem 0;
+    }
+    & .hamburgerDiv{
+        text-align: right;
     }
     & .divLlamadaApiFoto{
         background-image: url("https://images.unsplash.com/photo-1571157529496-486602ef2680?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60");

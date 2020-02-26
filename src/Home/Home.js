@@ -3,6 +3,7 @@ import logo from '../img/logo.png';
 import './Home.scss';
 import { faHeart, faSearch, faLightbulb } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { BrowserRouter as Router, Link } from 'react-router-dom';
 
 //NOTA: los metodos() son funciones pero dentro de objetos{}. Por ejemplo, dentro de un array muchas veces usamos metodos como .pop() porque es una funcion
 //dentro de un objeto array (typeof array = objeto). En el mismo caso de la array, length es una propiedad, no un metodo.
@@ -24,7 +25,11 @@ class Home extends Component {
         return (
             < div className="container-fluid home" >
                 <div className="row justify_center">
-                    <img src={logo} className="logo" alt="logo" />
+                    <Router>
+                        <Link to="/resultado-busqueda">
+                            <img src={logo} className="logo" alt="logo" />
+                        </Link>
+                    </Router>
                 </div>
                 <div className="row justify_center">
                     <input onChange={

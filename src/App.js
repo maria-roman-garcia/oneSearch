@@ -1,19 +1,17 @@
-import React, {Component} from 'react';
-// import SearchedComponent from './SearchedComponent/SearchedComponent'
-// import Home from './Home/Home';
+import React, { Component } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.scss';
-import SearchedComponent from './SearchedComponent/SearchedComponent';
-import Home from './Home/Home'
-
+import Routes from './Routes'
 
 class App extends React.Component {
 
   render() {
-    
-    return ( 
-      <div className = "App">
-        {/* <Home/> */}
-        <SearchedComponent/>
+
+    return (
+      <div className="App">
+        <Router>
+          <Routes/>
+        </Router>
       </div>
     );
   };

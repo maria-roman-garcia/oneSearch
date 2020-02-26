@@ -3,6 +3,7 @@ import './SearchedComponent.scss';
 import logo from '../img/logo.png'
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import WikiCard from './WikiCard'
 
 //NOTA: los metodos() son funciones pero dentro de objetos{}. Por ejemplo, dentro de un array muchas veces usamos metodos como .pop() porque es una funcion
@@ -12,8 +13,8 @@ class SearchedComponent extends Component {
     state = {
         mensajeUsuario: "",
         infoLlamadaApi: [],
-        inputPalabra: ""
-        // llamadaApiFoto: ""
+        inputPalabra: "",
+        llamadaApiFoto: ""
     };
 
     showItems = () => {
@@ -52,14 +53,19 @@ class SearchedComponent extends Component {
                     return fetchInfo.json();
                 })
                 .then(jsonInfo => {
+                    this.setState({
+                        llamadaApiFoto:""
+                    })
                     console.log(totalFetchUrl)
+                    const idNumberArray = Object.keys(jsonInfo.query.pages)
+                    const idNumber = idNumberArray[0]
 
                     this.setState(
                         //El primer argumento es un objeto en el que vamos a indicar lo que queremos cambiar del estado
                         //jsonInfo.query.search
                         {
                             infoLlamadaApi: [...jsonInfo.query.search],
-                            // llamadaApiFoto: jsonInfo.query.pages['186046'].original.source
+                            llamadaApiFoto: jsonInfo.query.pages[idNumber].original.source
                         },
                         //El segundo argumento es una funcion call back function. Se va a ejecutar solo cuando el estado se termine de actualizar
                         () => {
@@ -76,7 +82,7 @@ class SearchedComponent extends Component {
 
     async changeInputText(info) {
         await this.setState({
-            inputPalabra: info
+            inputPalabra: info,
         });
     }
 
@@ -84,31 +90,39 @@ class SearchedComponent extends Component {
         console.log("renderizado");
         console.log("Soy una letra:" + this.state.inputPalabra);
         console.log(this.state.infoLlamadaApi);
+        console.log(this.state.llamadaApiFoto)
 
         return (
+
+            // Navbar
             <div className="container-fluid searchedComponent" >
-                {/* navbar con logo y menu */}
-                <div className="row align_center">
-                    <div className="col-6 padding">
-                        <img src={logo} className="logo" alt="logo" />
+                <div class="row navBar">
+                    <div class="col-6 col-md-3">
+                        <Router>
+                            <Link to="/">
+                                <img src={logo} className="logo" alt="logo" />
+                            </Link>
+                        </Router>
                     </div>
-                    <div className="col-6 Menu padding">
+                    <div class="col-6 col-md-3 order-md-3 hamburgerDiv">
                         <FontAwesomeIcon icon={faBars} className="Icono fa-3x" />
                     </div>
-                </div>
-                {/* input y boton de buscar */}
-                <div className="row">
-                    <div className="col-12 justify_center">
-                        <input onChange={
-                            event => this.changeInputText(event.target.value)
-                        } type="text" />
+                    <div class="col-12 col-md-6">
+                        <div className="row align_center justify_center">
+                            <div className="col-12 col-md-6">
+                               <input onChange={
+                                event => this.changeInputText(event.target.value)
+                            } type="text" /> 
+                            </div>
+                            <div className="col-12 col-md-6 buttonDiv">
+                                <button onClick={
+                                event => this.makeApiCall()
+                            }>ENTER</button>
+                            </div>
+                        </div>
                     </div>
-                    <div className="col-12 justify_center">
-                        <button onClick={
-                            event => this.makeApiCall()
-                        }>ENTER</button>
-                    </div>
                 </div>
+
                 {/* Div con la imagen de fondo + palabra de la busqueda */}
                 <div className="row divLlamadaApiFoto">
                     <div className="filtro">
