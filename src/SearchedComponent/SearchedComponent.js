@@ -22,11 +22,12 @@ class SearchedComponent extends Component {
         }
     }
 
+    
     showItems = () => {
         return this.state.infoLlamadaApi.map((elemento, index) =>
             <WikiCard
                 titulo={elemento.title}
-                snippet={elemento.snippet}/>
+                snippet={elemento.snippet.replace(/<span class=|"searchmatch|">/g, '').replace(/<\/span>/g, '')}/>
         );
     };
 
