@@ -18,9 +18,19 @@ $smallScreen : 500px;
 }
 
 .carta {
+    margin: 1rem;
     border: 0.1rem solid $colorAzulOscuro;
     border-radius: 1rem;
-    margin: 1rem;
+    padding: 1rem;
     background-color: $colorAzulClaro;
     display: inline-grid;
+    & button{
+        background-color: $colorAzulOscuro;
+        padding: 5px 50px 5px 50px;
+        border-radius: 20px;
+        border-style: none;
+        & a{
+            color: $colorAzulClaro;
+        }
+    }
 }
