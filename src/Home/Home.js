@@ -35,7 +35,7 @@ class Home extends Component {
                     } type="text" />
                 </div>
                 <div className="row justify_center">
-                    <Link to="/resultado-busqueda">
+                    <Link to={"/resultado-busqueda/"+this.state.inputPalabra}>
                         <button type="button">ENTER</button>
                     </Link>
                 </div>

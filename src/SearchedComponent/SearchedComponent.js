@@ -4,6 +4,7 @@ import logo from '../img/logo.png'
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from 'react-router-dom';
+// import Routes from '../Routes'
 import WikiCard from './WikiCard'
 
 //NOTA: los metodos() son funciones pero dentro de objetos{}. Por ejemplo, dentro de un array muchas veces usamos metodos como .pop() porque es una funcion
@@ -16,7 +17,7 @@ class SearchedComponent extends Component {
         this.state = {
             mensajeUsuario: "",
             infoLlamadaApi: [],
-            inputPalabra: "",
+            inputPalabra: this.props.match.params.palabraBuscada,
             llamadaApiFoto: ""
         }
     }
@@ -133,7 +134,7 @@ class SearchedComponent extends Component {
                     <div className="col-12 col-md-6">
                         <div className="row align_center justify_center">
                             <div className="col-12 col-md-6">
-                                <input onChange={
+                                <input value={this.state.inputPalabra} onChange={
                                     event => this.changeInputText(event.target.value)
                                 } type="text" />
                             </div>

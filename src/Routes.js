@@ -7,7 +7,7 @@ const Routes = () => {
     return(
         <div className="container-fluid">
             <Route path="/" exact component={Home} />
-            <Route path="/resultado-busqueda" component={SearchedComponent} />
+            <Route path="/resultado-busqueda/:palabraBuscada" component={SearchedComponent} />
         </div>
     )
 }
