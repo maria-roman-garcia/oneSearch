@@ -55,8 +55,9 @@ $smallScreen : 500px;
 }
 
 .home {
-    & img{
-        width: 21%;
+    & .logo{
+        width: 51%;
+        margin-top: 30%;
     }
     & p{
         font-size: medium;

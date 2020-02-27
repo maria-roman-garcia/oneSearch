@@ -3,7 +3,7 @@ import './SearchedComponent.scss';
 import logo from '../img/logo.png'
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Link } from 'react-router-dom';
 import WikiCard from './WikiCard'
 
 //NOTA: los metodos() son funciones pero dentro de objetos{}. Por ejemplo, dentro de un array muchas veces usamos metodos como .pop() porque es una funcion
@@ -74,6 +74,7 @@ class SearchedComponent extends Component {
                     );
                 });
         }
+
     };
 
     componentDidMount() {
@@ -86,28 +87,36 @@ class SearchedComponent extends Component {
         });
     }
 
+    fotoRenderizada = () =>{
+        if(this.state.llamadaApiFoto === ""){
+            return ('url(https://images.unsplash.com/photo-1573812195421-50a396d17893?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60)')
+        }else{
+            return (`url(${this.state.llamadaApiFoto})`)
+        }
+    }
+    
     render() {
-        console.log("renderizado");
-        console.log("Soy una letra:" + this.state.inputPalabra);
-        console.log(this.state.infoLlamadaApi);
+        // console.log("renderizado");
+        // console.log("Soy una letra:" + this.state.inputPalabra);
+        // console.log(this.state.infoLlamadaApi);
         console.log(this.state.llamadaApiFoto)
 
         return (
 
             // Navbar
             <div className="container-fluid searchedComponent" >
-                <div class="row navBar">
-                    <div class="col-6 col-md-3">
+                <div className="row navBar">
+                    <div className="col-6 col-md-3">
                         <Router>
                             <Link to="/">
                                 <img src={logo} className="logo" alt="logo" />
                             </Link>
                         </Router>
                     </div>
-                    <div class="col-6 col-md-3 order-md-3 hamburgerDiv">
+                    <div className="col-6 col-md-3 order-md-3 hamburgerDiv">
                         <FontAwesomeIcon icon={faBars} className="Icono fa-3x" />
                     </div>
-                    <div class="col-12 col-md-6">
+                    <div className="col-12 col-md-6">
                         <div className="row align_center justify_center">
                             <div className="col-12 col-md-6">
                                <input onChange={
@@ -124,7 +133,7 @@ class SearchedComponent extends Component {
                 </div>
 
                 {/* Div con la imagen de fondo + palabra de la busqueda */}
-                <div className="row divLlamadaApiFoto">
+                <div className="row divLlamadaApiFoto" style={{ backgroundImage: `${this.fotoRenderizada()}`}}>
                     <div className="filtro">
                         <div className="filtroPalabra justify_center align_center">
                             <h1 className="palabraLlamadaApiFoto">{this.state.inputPalabra.toUpperCase()}</h1>

@@ -26,7 +26,7 @@ class Home extends Component {
             < div className="container-fluid home" >
                 <div className="row justify_center">
                     <Router>
-                        <Link to="/resultado-busqueda">
+                        < Link to="/resultado-busqueda" className="row justify_center">
                             <img src={logo} className="logo" alt="logo" />
                         </Link>
                     </Router>
@@ -34,19 +34,19 @@ class Home extends Component {
                 <div className="row justify_center">
                     <input onChange={
                         event => this.changeInputText(event.target.value)
-                    } type="text"/>
+                    } type="text" />
                 </div>
                 <div className="row justify_center">
-                         {/* <link to="/"> */}
-                            <button type="button">
-                                ENTER
+                    {/* <link to="/"> */}
+                    <button type="button">
+                        ENTER
                             </button>
-                        {/* </link> */}
+                    {/* </link> */}
                 </div>
                 <div className="row">
                     <div className="col-12 col-md-4">
                         <div className="row icono justify_center">
-                            <FontAwesomeIcon icon={faHeart} className="Icono fa-3x"/>
+                            <FontAwesomeIcon icon={faHeart} className="Icono fa-3x" />
                         </div>
                         <div className="row padding">
                             <p>¡Bienvenid@ a OneSearch! La pagina donde podrás encontrar y comparar información en diferentes fuentes como Wikipedia o Twitter.</p>
