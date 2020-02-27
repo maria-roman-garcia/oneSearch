@@ -23,11 +23,10 @@ class SearchedComponent extends Component {
     }
 
     showItems = () => {
-        return this.state.infoLlamadaApi.map(elemento =>
-            <div>
-                <p>{elemento.title}</p>
-                <p>{elemento.snippet}</p>
-            </div>
+        return this.state.infoLlamadaApi.map((elemento, index) =>
+            <WikiCard
+                titulo={elemento.title}
+                snippet={elemento.snippet}/>
         );
     };
 
@@ -170,11 +169,6 @@ class SearchedComponent extends Component {
                 {/* Palabras encontradas */}
                 <div className="row">
                     <p> {this.showItems()} </p>
-                </div>
-
-                <div className="row justify_center">
-                    <WikiCard />
-                    <WikiCard />
                 </div>
             </div>
         )
