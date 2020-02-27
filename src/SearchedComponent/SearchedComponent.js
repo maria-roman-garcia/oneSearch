@@ -53,25 +53,37 @@ class SearchedComponent extends Component {
                     return fetchInfo.json();
                 })
                 .then(jsonInfo => {
-                    this.setState({
-                        llamadaApiFoto:""
-                    })
-                    console.log(totalFetchUrl)
+
                     const idNumberArray = Object.keys(jsonInfo.query.pages)
                     const idNumber = idNumberArray[0]
 
-                    this.setState(
-                        //El primer argumento es un objeto en el que vamos a indicar lo que queremos cambiar del estado
-                        //jsonInfo.query.search
-                        {
-                            infoLlamadaApi: [...jsonInfo.query.search],
-                            llamadaApiFoto: jsonInfo.query.pages[idNumber].original.source
-                        },
-                        //El segundo argumento es una funcion call back function. Se va a ejecutar solo cuando el estado se termine de actualizar
-                        () => {
-                            this.showItems();
-                        }
-                    );
+                    if (jsonInfo.query.pages[idNumber].original == undefined) {
+                        this.setState(
+                            //El primer argumento es un objeto en el que vamos a indicar lo que queremos cambiar del estado
+                            //jsonInfo.query.search
+                            {
+                                infoLlamadaApi: [...jsonInfo.query.search],
+                                llamadaApiFoto: ""
+                            },
+                            //El segundo argumento es una funcion call back function. Se va a ejecutar solo cuando el estado se termine de actualizar
+                            () => {
+                                this.showItems();
+                            }
+                        );
+                    } else {
+                        this.setState(
+                            //El primer argumento es un objeto en el que vamos a indicar lo que queremos cambiar del estado
+                            //jsonInfo.query.search
+                            {
+                                infoLlamadaApi: [...jsonInfo.query.search],
+                                llamadaApiFoto: jsonInfo.query.pages[idNumber].original.source
+                            },
+                            //El segundo argumento es una funcion call back function. Se va a ejecutar solo cuando el estado se termine de actualizar
+                            () => {
+                                this.showItems();
+                            }
+                        );
+                    }
                 });
         }
 
@@ -87,14 +99,14 @@ class SearchedComponent extends Component {
         });
     }
 
-    fotoRenderizada = () =>{
-        if(this.state.llamadaApiFoto === ""){
+    fotoRenderizada = () => {
+        if (this.state.llamadaApiFoto === "") {
             return ('url(https://images.unsplash.com/photo-1573812195421-50a396d17893?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60)')
-        }else{
+        } else {
             return (`url(${this.state.llamadaApiFoto})`)
         }
     }
-    
+
     render() {
         // console.log("renderizado");
         // console.log("Soy una letra:" + this.state.inputPalabra);
@@ -119,21 +131,21 @@ class SearchedComponent extends Component {
                     <div className="col-12 col-md-6">
                         <div className="row align_center justify_center">
                             <div className="col-12 col-md-6">
-                               <input onChange={
-                                event => this.changeInputText(event.target.value)
-                            } type="text" /> 
+                                <input onChange={
+                                    event => this.changeInputText(event.target.value)
+                                } type="text" />
                             </div>
                             <div className="col-12 col-md-6 buttonDiv">
                                 <button onClick={
-                                event => this.makeApiCall()
-                            }>ENTER</button>
+                                    event => this.makeApiCall()
+                                }>ENTER</button>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 {/* Div con la imagen de fondo + palabra de la busqueda */}
-                <div className="row divLlamadaApiFoto" style={{ backgroundImage: `${this.fotoRenderizada()}`}}>
+                <div className="row divLlamadaApiFoto" style={{ backgroundImage: `${this.fotoRenderizada()}` }}>
                     <div className="filtro">
                         <div className="filtroPalabra justify_center align_center">
                             <h1 className="palabraLlamadaApiFoto">{this.state.inputPalabra.toUpperCase()}</h1>
