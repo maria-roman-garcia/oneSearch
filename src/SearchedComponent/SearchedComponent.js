@@ -3,19 +3,23 @@ import './SearchedComponent.scss';
 import logo from '../img/logo.png'
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { BrowserRouter as Router, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import WikiCard from './WikiCard'
 
 //NOTA: los metodos() son funciones pero dentro de objetos{}. Por ejemplo, dentro de un array muchas veces usamos metodos como .pop() porque es una funcion
 //dentro de un objeto array (typeof array = objeto). En el mismo caso de la array, length es una propiedad, no un metodo.
 
 class SearchedComponent extends Component {
-    state = {
-        mensajeUsuario: "",
-        infoLlamadaApi: [],
-        inputPalabra: "",
-        llamadaApiFoto: ""
-    };
+
+    constructor(props) {
+        super(props)
+        this.state = {
+            mensajeUsuario: "",
+            infoLlamadaApi: [],
+            inputPalabra: "",
+            llamadaApiFoto: ""
+        }
+    }
 
     showItems = () => {
         return this.state.infoLlamadaApi.map(elemento =>
@@ -119,11 +123,9 @@ class SearchedComponent extends Component {
             <div className="container-fluid searchedComponent" >
                 <div className="row navBar">
                     <div className="col-6 col-md-3">
-                        <Router>
                             <Link to="/">
                                 <img src={logo} className="logo" alt="logo" />
                             </Link>
-                        </Router>
                     </div>
                     <div className="col-6 col-md-3 order-md-3 hamburgerDiv">
                         <FontAwesomeIcon icon={faBars} className="Icono fa-3x" />
