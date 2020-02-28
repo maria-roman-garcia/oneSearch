@@ -4,11 +4,8 @@ import './Home.scss';
 import { faHeart, faSearch, faLightbulb } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from 'react-router-dom';
-<<<<<<< HEAD
 import Navbar from '../Navbar/Navbar'
-=======
 import AlertDismissible from './AlertDismissible'
->>>>>>> 0858e2ff97f74c762951994109ea414a2d626f93
 
 
 //NOTA: los metodos() son funciones pero dentro de objetos{}. Por ejemplo, dentro de un array muchas veces usamos metodos como .pop() porque es una funcion
@@ -30,16 +27,11 @@ class Home extends Component {
         console.log(this.state.inputPalabra)
 
         return (
-<<<<<<< HEAD
-            < div className="container-fluid home" >
+            <div className="container-fluid home" >
+
                 <div className="row menu-hamburger">
                     <Navbar />
                 </div>
-=======
-            
-            <div className="container-fluid home" >
-
->>>>>>> 0858e2ff97f74c762951994109ea414a2d626f93
                 <div className="row justify_center">
                     < Link to="/" className="row justify_center">
                         <img src={logo} className="logo" alt="logo" />
@@ -49,18 +41,18 @@ class Home extends Component {
                 <div className="row justify_center">
                     <input className="inputItem " onChange={
                         event => this.changeInputText(event.target.value)
-                    } type="text" placeholder="¿Qué te interesa?"/>
+                    } type="text" placeholder="¿Qué te interesa?" />
                 </div>
                 <div className="row justify_center">
 
                     {
                         this.state.inputPalabra === ""
                             ? <AlertDismissible />
-                            :  <Link onClick={this.completeInput} to={"/resultado-busqueda/" + this.state.inputPalabra}>
-                        <button type="button">ENTER</button>
-                    </Link>
+                            : <Link onClick={this.completeInput} to={"/resultado-busqueda/" + this.state.inputPalabra}>
+                                <button type="button">ENTER</button>
+                            </Link>
                     }
-                   
+
                 </div>
 
                 <div className="row">
