@@ -137,7 +137,7 @@ class SearchedComponent extends Component {
                     <div className="col-12 col-md-6">
                         <div className="row align_center justify_center">
                             <div className="col-12 col-md-6">
-                                <input value={this.state.inputPalabra} onChange={
+                                <input className="inputItem" value={this.state.inputPalabra} onChange={
                                     event => this.changeInputText(event.target.value)
                                 } type="text" />
                             </div>
