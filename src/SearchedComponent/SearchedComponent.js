@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from 'react-router-dom';
 // import Routes from '../Routes'
 import WikiCard from './WikiCard'
+import Navbar from '../Navbar/Navbar'
 
 //NOTA: los metodos() son funciones pero dentro de objetos{}. Por ejemplo, dentro de un array muchas veces usamos metodos como .pop() porque es una funcion
 //dentro de un objeto array (typeof array = objeto). En el mismo caso de la array, length es una propiedad, no un metodo.
@@ -130,7 +131,8 @@ class SearchedComponent extends Component {
                             </Link>
                     </div>
                     <div className="col-6 col-md-3 order-md-3 hamburgerDiv">
-                        <FontAwesomeIcon icon={faBars} className="Icono fa-3x" />
+                        {/* <FontAwesomeIcon icon={faBars} className="Icono fa-3x" /> */}
+                        <Navbar />
                     </div>
                     <div className="col-12 col-md-6">
                         <div className="row align_center justify_center">
