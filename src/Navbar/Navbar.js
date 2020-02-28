@@ -27,9 +27,9 @@ class Navbar extends Component {
                                 </ul>
                             </div>
                             <div>
-                            <p id='nav-menu-hamburger'>
+                            <div id='nav-menu-hamburger'>
                                 <span></span>
-                            </p>
+                            </div>
                             </div>
                     <div className='main-container '></div>
                 </div>        
