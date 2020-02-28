@@ -36,7 +36,7 @@ class Home extends Component {
                 </div>
 
                 <div className="row justify_center">
-                    <input onChange={
+                    <input className="inputItem " onChange={
                         event => this.changeInputText(event.target.value)
                     } type="text" placeholder="¿Qué te interesa?"/>
                 </div>
