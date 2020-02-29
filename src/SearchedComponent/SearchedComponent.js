@@ -27,7 +27,7 @@ class SearchedComponent extends Component {
     showItems = () => {
         return this.state.infoLlamadaApi.map((elemento, index) =>
             <WikiCard
-                indexKey= {index}
+                indexKey={index}
                 titulo={elemento.title}
                 snippet={elemento.snippet.replace(/<span class=|"searchmatch|">/g, '').replace(/<\/span>/g, '')}/>
         );
