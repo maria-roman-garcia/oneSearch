@@ -7,6 +7,8 @@ import { Link } from 'react-router-dom';
 // import Routes from '../Routes'
 import WikiCard from './WikiCard'
 import Navbar from '../Navbar/Navbar'
+import Twitter from "./Twitter";
+import Otros from './Otros'
 
 //NOTA: los metodos() son funciones pero dentro de objetos{}. Por ejemplo, dentro de un array muchas veces usamos metodos como .pop() porque es una funcion
 //dentro de un objeto array (typeof array = objeto). En el mismo caso de la array, length es una propiedad, no un metodo.
@@ -16,9 +18,9 @@ class SearchedComponent extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            // wikipedia
-            infoLlamadaApi: [],
-            inputPalabra: this.props.match.params.palabraBuscada,
+            inputPalabraEscribiendo: this.props.match.params.palabraBuscada,
+            inputPalabraBuscar: this.props.match.params.palabraBuscada,
+            // wikipedia foto
             llamadaApiFoto: "",
             // menu wiki twitter y otro
             namesApisList: [{
@@ -35,26 +37,15 @@ class SearchedComponent extends Component {
         }
     }
 
-
-
-    showItemsWikipedia = () => {
-        return this.state.infoLlamadaApi.map((elemento, index) =>
-            <WikiCard
-                indexKey={index}
-                titulo={elemento.title}
-                snippet={elemento.snippet.replace(/<span class=|"searchmatch|">/g, '').replace(/<\/span>/g, '')} />
-        );
-    };
-
-    makeApiCallWikipedia = () => {
+    makeApiCallWikipedia = (palabraBuscarOpcional) => {
 
         // https://es.wikipedia.org/w/api.php?action=query&list=search&srprop=snippet&titles=casa&prop=pageimages&format=json&piprop=original&origin=*&utf8=&srsearch=casa
 
         let primeraFetchUrl = "https://es.wikipedia.org/w/api.php?action=query&list=search&srprop=snippet&titles=";
         let segundaFetchUrl = "&prop=pageimages&format=json&piprop=original&origin=*&utf8=&srsearch=";
 
-        primeraFetchUrl += this.state.inputPalabra;
-        segundaFetchUrl += this.state.inputPalabra;
+        primeraFetchUrl += palabraBuscarOpcional||this.state.inputPalabraBuscar;
+        segundaFetchUrl += palabraBuscarOpcional||this.state.inputPalabraBuscar;
 
         let totalFetchUrl = `${primeraFetchUrl}${segundaFetchUrl}`;
 
@@ -68,15 +59,12 @@ class SearchedComponent extends Component {
 
                 const idNumber = Object.keys(jsonInfo.query.pages)[0]
                 this.setState(
-                    //El primer argumento es un objeto en el que vamos a indicar lo que queremos cambiar del estado
-                    //jsonInfo.query.search
+                    
+                    //Cogemos e id de const idNumber, y si es undefined nos lo mete en un objeto vacio.(porque podemos hacer {}.propiedad pero no undefined.propiedad ...que da error) Como resultado final, si es undefined nos carga una imagen por defecto.
+                    //
                     {
-                        infoLlamadaApi: [...jsonInfo.query.search],
+                        inputPalabraBuscar: palabraBuscarOpcional||this.state.inputPalabraEscribiendo,
                         llamadaApiFoto: (((jsonInfo.query.pages[idNumber] || {}).original || {}).source || 'https://images.unsplash.com/photo-1573812195421-50a396d17893?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60')
-                    },
-                    //El segundo argumento es una funcion call back function. Se va a ejecutar solo cuando el estado se termine de actualizar
-                    () => {
-                        this.showItemsWikipedia();
                     }
                 );
             });
@@ -88,19 +76,46 @@ class SearchedComponent extends Component {
 
     async changeInputText(info) {
         await this.setState({
-            inputPalabra: info,
+            inputPalabraEscribiendo: info,
         });
     }
 
+    // en funcion de que id del menu twitter wiki...este seleccionado se muestra una cosa u otra
+    renderSwitch=()=>{
+        switch (this.state.idApiSelected) {
+            case 0:
+                return (
+                    // Palabras encontradas Wikipedia.
+                    <div className="row justify_center">
+                        <WikiCard inputPalabraBuscar={this.state.inputPalabraBuscar} />
+                    </div>
+                )
+            case 1:
+                return (
+                    //Twitter.
+                    <div className="row justify_center">
+                        <Twitter/>
+                    </div>
+                )
+            case 2:
+                return (
+                    //Twitter.
+                    <div className="row justify_center">
+                        <Otros />
+                    </div>
+                )
+
+            default: return <p>No hay resultados</p>
+        }
+    }
+
     render() {
-        // console.log("renderizado");
-        // console.log("Soy una letra:" + this.state.inputPalabra);
-        // console.log(this.state.infoLlamadaApi);
-        console.log(this.state.llamadaApiFoto)
+        
+        // console.log(this.state.llamadaApiFoto)
 
         return (
-
             // Navbar
+
             <div className="container-fluid searchedComponent" >
                 <div className="row navBar">
                     <div className="col-6 col-md-3">
@@ -115,14 +130,14 @@ class SearchedComponent extends Component {
                     <div className="col-12 col-md-6">
                         <div className="row align_center justify_center">
                             <div className="col-12 col-md-6">
-                                <input className="inputItem" value={this.state.inputPalabra} onChange={
+                                <input className="inputItem" value={this.state.inputPalabraEscribiendo} onChange={
                                     event => this.changeInputText(event.target.value)
                                 } type="text" />
                             </div>
                             <div className="col-12 col-md-6 buttonDiv">
                                 <button onClick={
-                                    event => this.makeApiCallWikipedia()
-                                }>ENTER</button>
+                                    event => this.makeApiCallWikipedia(this.state.inputPalabraEscribiendo)
+                                }>BUSCAR</button>
                             </div>
                         </div>
                     </div>
@@ -132,11 +147,12 @@ class SearchedComponent extends Component {
                 <div className="row divLlamadaApiFoto" style={{ backgroundImage: `url(${this.state.llamadaApiFoto})` }}>
                     <div className="filtro">
                         <div className="filtroPalabra justify_center align_center">
-                            <h1 className="palabraLlamadaApiFoto">{this.state.inputPalabra.toUpperCase()}</h1>
+                            <h1 className="palabraLlamadaApiFoto">{this.state.inputPalabraBuscar.toUpperCase()}</h1>
                         </div>
-                        {/* Menu. Hacemos map para pintar cada elemento del state */}
+                        {/* Menu. Hacemos map para pintar cada elemento de la propiedad namesApisList del state */}
                         <div className="row filtroMenu">
                             {this.state.namesApisList.map(e => {
+                                // el que este seleccionado le añadimos la clase .selected
                                 const classname = "col-4 justify_center align_center" + (this.state.idApiSelected === e.id ? " selected" : "");
                                 return (
                                     <div className={classname} onClick={() => this.setState({
@@ -149,10 +165,9 @@ class SearchedComponent extends Component {
                         </div>
                     </div>
                 </div>
-
-                {/* Palabras encontradas Twitter */}
-                <div className="row justify_center">
-                    {this.showItemsWikipedia()}
+                
+                <div>
+                    {this.renderSwitch()}
                 </div>
             </div>
         )
