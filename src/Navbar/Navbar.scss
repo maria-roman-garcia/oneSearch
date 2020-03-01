@@ -1,37 +1,33 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:500&display=swap');
+$breakpoint-xs: 360px;
+$breakpoint-sm: 767px;
+$breakpoint-md: 1023px;
+$breakpoint-lg: 1360px;
 
-$darkcolor: #4F91B1;
-$lightcolor: #CCE9F1;
-$fontcolor: #ffffff;
+@mixin media($media) {
+  @if $media==xs {
+      @media (max-width: $breakpoint-sm) {
+          @content;
+      }
+  }
 
-body {
-  padding: 0;
-  maring: 0;
-  width: 100%;
+  @else if $media==sm {
+      @media (min-width: $breakpoint-sm) and (max-width: $breakpoint-md) {
+          @content;
+      }
+  }
+
+  @else if $media==md {
+      @media (min-width: $breakpoint-md) and (max-width: $breakpoint-lg) {
+          @content;
+      }
+  }
+
+  @else if $media==lg {
+      @media (min-width: $breakpoint-lg) {
+          @content;
+      }
+  }
 }
-.main-container {
-  width: 100%;
-  background-color: $lightcolor;
-  margin: -5px;
-  padding: 0;
-}
-.nav-menu {
-  #nav-menu-hamburger {
-    top: 90px;
-    right: 20px;
-    z-index: 999;
-    cursor: pointer;
-    height: 35px;
-    width: 30px;
-    padding: 10px 35px 16px 0px;
-    transition: all ease-in-out 0.5s;
-    span, span:before, span:after {
-      position: absolute;
-      width: 30px;
-      height: 5px;
-      background-color: $darkcolor;
-      right: 20px;
-      content: ' ';@import url('https://fonts.googleapis.com/css?family=Roboto:500&display=swap');
 
 $darkcolor: #4F91B1;
 $lightcolor: #CCE9F1;
@@ -53,7 +49,7 @@ body {
   #nav-menu-hamburger {
     position: fixed;
     top: 20px;
-    right: 40px;
+    right: 20px;
     z-index: 999;
     cursor: pointer;
     height: 35px;
@@ -65,7 +61,7 @@ body {
       width: 30px;
       height: 5px;
       background-color: $darkcolor;
-      right: 40px;
+      right: 20px;
       content: ' ';
       
       transition: all ease-in-out 0.5s;
@@ -86,80 +82,7 @@ body {
   }
   
   #nav-menu-hamburger.active {
-    top: calc(20px + 60px);
-    span:before, #nav-toggle.active span:after {
-      top: 20px;
-    }
-    span {
-      background: transparent;
-    }
-    span:before {
-      transform: rotate(45deg);
-    }
-    span:after {
-      transform: rotate(-45deg);
-    }
-  }
-}
-.nav-menu-body {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 60px; //altura del nav-menu-body
-  background-color: $darkcolor;
-  transition: top ease-in-out 0.5s;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  
-  li { 
-    display: inline-block;
-    margin: 0 20px 0 20px;
-    font-family: 'Roboto', sans-serif;
-    font-size: 1em;
-    color: $fontcolor;
-    
-    p{
-      text-decoration: none;
-      color: $fontcolor;
-    }
-  }
-  
-}
-.nav-menu-body.hidden {
-  top: -100px;
-}
-
-.rowNavbar{
-  background-color: $lightcolor;
-}
-
-.logo{
-  top: calc(20px + 60px);
-  width: 50%;
-  margin: 18px 0 0 0;
-}
-      
-      transition: all ease-in-out 0.2s;
-    }
-    
-    span:before {
-      top: 10px;
-      right: 0;
-    }
-    span:after {
-      top: 20px;
-      right: 0;
-    }
-    
-    div:after {
-      
-    }
-  }
-  
-  #nav-menu-hamburger.active {
-    top: calc(20px + 60px);
+    top: calc(20px + 40px);
     span:before, #nav-toggle.active span:after {
       top: 20px;
     }
@@ -185,25 +108,48 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  ul{
-    margin: 0;
-  
-      li { 
+
+ul{
+  margin: 0;
+  @include media(lg) {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+  }
+
+
+  li { 
     display: inline-block;
     margin: 0 20px 0 20px;
-    font-family: 'Roboto', sans-serif;
     font-size: 1em;
     color: $fontcolor;
-    
-      p{
+
+    @include media(sm) {
+      font-size: 1em;
+      display: inline;
+      margin: 0;
+    }
+
+    @include media(lg) {
+    font-size: 1em;
+    display: inline;
+    margin: 0;
+    }
+
+  }
+  
+    p{
       text-decoration: none;
       color: $fontcolor;
-      }
     }
-  }
+  
+}
+  
+  
+  
 }
 .nav-menu-body.hidden {
-  top: -100px;
+  top: -60px;
 }
 
 .rowNavbar{
@@ -212,6 +158,6 @@ body {
 
 .logo{
   top: calc(20px + 60px);
-  width: 18%;
+  width: 50%;
   margin: 18px 0 0 0;
 }

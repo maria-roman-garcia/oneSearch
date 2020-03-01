@@ -15,29 +15,24 @@ class Navbar extends Component {
     }
 
     render(){
-
-
-            return(
-                <div className='nav-menu '>
+    return(
+                    
+                        <div className='nav-menu '>
                             <div className='nav-menu-body hidden'>
-                                <ul>
-                                    <li>TUTORIAL</li>
-                                    <li>COLABORA</li>
-                                    <li>SUGERENCIAS</li>
-                                </ul>
+                            <ul>
+                                <li>TUTORIAL</li>
+                                <li>COLABORA</li>
+                                <li>SUGERENCIAS</li>
+                            </ul>
                             </div>
-                            <div>
-                            <div id='nav-menu-hamburger'>
+                            <p id='nav-menu-hamburger'>
                                 <span></span>
-                            </div>
-                            </div>
-                    <div className='main-container '></div>
-                </div>        
-            )            
+                            </p>
+                        </div>
+    )            
     }
 
     
 }
 
 export default Navbar;
-
