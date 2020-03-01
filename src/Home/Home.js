@@ -5,7 +5,7 @@ import { faHeart, faSearch, faLightbulb } from "@fortawesome/free-solid-svg-icon
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from 'react-router-dom';
 import Navbar from '../Navbar/Navbar'
-import AlertDismissible from './AlertDismissible'
+import AlertCard from './AlertCard'
 
 
 //NOTA: los metodos() son funciones pero dentro de objetos{}. Por ejemplo, dentro de un array muchas veces usamos metodos como .pop() porque es una funcion
@@ -47,7 +47,7 @@ class Home extends Component {
 
                     {
                         this.state.inputPalabra === ""
-                            ? <AlertDismissible />
+                            ? <AlertCard />
                             : <Link onClick={this.completeInput} to={"/resultado-busqueda/" + this.state.inputPalabra}>
                                 <button type="button">ENTER</button>
                             </Link>

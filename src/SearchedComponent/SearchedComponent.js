@@ -16,24 +16,37 @@ class SearchedComponent extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            mensajeUsuario: "",
+            // wikipedia
             infoLlamadaApi: [],
             inputPalabra: this.props.match.params.palabraBuscada,
-            llamadaApiFoto: ""
+            llamadaApiFoto: "",
+            // menu wiki twitter y otro
+            namesApisList: [{
+                id: 0,
+                name: 'Wikipedia',
+            }, {
+                id: 1,
+                name: 'Twitter',
+            }, {
+                id: 2,
+                name: 'Otro',
+            }],
+            idApiSelected: 0
         }
     }
 
-    
-    showItems = () => {
+
+
+    showItemsWikipedia = () => {
         return this.state.infoLlamadaApi.map((elemento, index) =>
             <WikiCard
-                indexKey= {index}
+                indexKey={index}
                 titulo={elemento.title}
-                snippet={elemento.snippet.replace(/<span class=|"searchmatch|">/g, '').replace(/<\/span>/g, '')}/>
+                snippet={elemento.snippet.replace(/<span class=|"searchmatch|">/g, '').replace(/<\/span>/g, '')} />
         );
     };
 
-    makeApiCall = () => {
+    makeApiCallWikipedia = () => {
 
         // https://es.wikipedia.org/w/api.php?action=query&list=search&srprop=snippet&titles=casa&prop=pageimages&format=json&piprop=original&origin=*&utf8=&srsearch=casa
 
@@ -45,73 +58,38 @@ class SearchedComponent extends Component {
 
         let totalFetchUrl = `${primeraFetchUrl}${segundaFetchUrl}`;
 
-        if (this.state.inputPalabra === "") {
-            this.setState({
-                mensajeUsuario: "Mete una nueva palabra"
-            });
-        } else {
-            this.setState({
-                mensajeUsuario: "Resultados:"
-            });
-            fetch(totalFetchUrl)
-                //fetch actua como si fuera una promesa. Con el .then forzamos a que espere a la respuesta y que sea sincrono
-                .then(fetchInfo => {
-                    //.json() es un metodo que convierte la informacion del argumento (fetchInfo) a formato Json
-                    return fetchInfo.json();
-                })
-                .then(jsonInfo => {
+        fetch(totalFetchUrl)
+            //fetch actua como si fuera una promesa. Con el .then forzamos a que espere a la respuesta y que sea sincrono
+            .then(fetchInfo => {
+                //.json() es un metodo que convierte la informacion del argumento (fetchInfo) a formato Json
+                return fetchInfo.json();
+            })
+            .then(jsonInfo => {
 
-                    const idNumberArray = Object.keys(jsonInfo.query.pages)
-                    const idNumber = idNumberArray[0]
-
-                    if (jsonInfo.query.pages[idNumber].original == undefined) {
-                        this.setState(
-                            //El primer argumento es un objeto en el que vamos a indicar lo que queremos cambiar del estado
-                            //jsonInfo.query.search
-                            {
-                                infoLlamadaApi: [...jsonInfo.query.search],
-                                llamadaApiFoto: ""
-                            },
-                            //El segundo argumento es una funcion call back function. Se va a ejecutar solo cuando el estado se termine de actualizar
-                            () => {
-                                this.showItems();
-                            }
-                        );
-                    } else {
-                        this.setState(
-                            //El primer argumento es un objeto en el que vamos a indicar lo que queremos cambiar del estado
-                            //jsonInfo.query.search
-                            {
-                                infoLlamadaApi: [...jsonInfo.query.search],
-                                llamadaApiFoto: jsonInfo.query.pages[idNumber].original.source
-                            },
-                            //El segundo argumento es una funcion call back function. Se va a ejecutar solo cuando el estado se termine de actualizar
-                            () => {
-                                this.showItems();
-                            }
-                        );
+                const idNumber = Object.keys(jsonInfo.query.pages)[0]
+                this.setState(
+                    //El primer argumento es un objeto en el que vamos a indicar lo que queremos cambiar del estado
+                    //jsonInfo.query.search
+                    {
+                        infoLlamadaApi: [...jsonInfo.query.search],
+                        llamadaApiFoto: (((jsonInfo.query.pages[idNumber] || {}).original || {}).source || 'https://images.unsplash.com/photo-1573812195421-50a396d17893?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60')
+                    },
+                    //El segundo argumento es una funcion call back function. Se va a ejecutar solo cuando el estado se termine de actualizar
+                    () => {
+                        this.showItemsWikipedia();
                     }
-                });
-        }
-
+                );
+            });
     };
 
     componentDidMount() {
-        this.makeApiCall();
+        this.makeApiCallWikipedia();
     }
 
     async changeInputText(info) {
         await this.setState({
             inputPalabra: info,
         });
-    }
-
-    fotoRenderizada = () => {
-        if (this.state.llamadaApiFoto === "") {
-            return ('url(https://images.unsplash.com/photo-1573812195421-50a396d17893?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60)')
-        } else {
-            return (`url(${this.state.llamadaApiFoto})`)
-        }
     }
 
     render() {
@@ -126,9 +104,9 @@ class SearchedComponent extends Component {
             <div className="container-fluid searchedComponent" >
                 <div className="row navBar">
                     <div className="col-6 col-md-3">
-                            <Link to="/">
-                                <img src={logo} className="logo" alt="logo" />
-                            </Link>
+                        <Link to="/">
+                            <img src={logo} className="logo" alt="logo" />
+                        </Link>
                     </div>
                     <div className="col-6 col-md-3 order-md-3 hamburgerDiv">
                         {/* <FontAwesomeIcon icon={faBars} className="Icono fa-3x" /> */}
@@ -143,36 +121,38 @@ class SearchedComponent extends Component {
                             </div>
                             <div className="col-12 col-md-6 buttonDiv">
                                 <button onClick={
-                                    event => this.makeApiCall()
+                                    event => this.makeApiCallWikipedia()
                                 }>ENTER</button>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                {/* Div con la imagen de fondo + palabra de la busqueda */}
-                <div className="row divLlamadaApiFoto" style={{ backgroundImage: `${this.fotoRenderizada()}` }}>
+                {/* Div con la imagen de fondo + palabra de la busqueda y el menu de las fuentes de informacion */}
+                <div className="row divLlamadaApiFoto" style={{ backgroundImage: `url(${this.state.llamadaApiFoto})` }}>
                     <div className="filtro">
                         <div className="filtroPalabra justify_center align_center">
                             <h1 className="palabraLlamadaApiFoto">{this.state.inputPalabra.toUpperCase()}</h1>
                         </div>
+                        {/* Menu. Hacemos map para pintar cada elemento del state */}
                         <div className="row filtroMenu">
-                            <div className="col-4 justify_center selected align_center">
-                                <p>Wikipedia</p>
-                            </div>
-                            <div className="col-4 justify_center align_center">
-                                <p>Twitter</p>
-                            </div>
-                            <div className="col-4 justify_center align_center">
-                                <p>Otra</p>
-                            </div>
+                            {this.state.namesApisList.map(e => {
+                                const classname = "col-4 justify_center align_center" + (this.state.idApiSelected === e.id ? " selected" : "");
+                                return (
+                                    <div className={classname} onClick={() => this.setState({
+                                        idApiSelected: e.id
+                                    })}>
+                                        <p> {e.name}</p>
+                                    </div>
+                                )
+                            })}
                         </div>
                     </div>
                 </div>
 
-                {/* Palabras encontradas */}
+                {/* Palabras encontradas Twitter */}
                 <div className="row justify_center">
-                    {this.showItems()}
+                    {this.showItemsWikipedia()}
                 </div>
             </div>
         )
