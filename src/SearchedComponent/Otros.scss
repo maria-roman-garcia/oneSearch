@@ -1,5 +1,13 @@
-.imageWorkingOnIt{
-    src: url("https://media.giphy.com/media/5Zesu5VPNGJlm/giphy.gif");
-    width: 100px;
-    alt:"Working on it";
+// ALINEAR, MARGENES Y PADDINGS
+.justify_center {
+    display: flex;
+    justify-content: center;
+}
+
+ .imageWorkingOnIt {
+    margin: 3rem;
+    & img {
+        width: 50vw;
+        border-radius: 70px;
+    }
 }
