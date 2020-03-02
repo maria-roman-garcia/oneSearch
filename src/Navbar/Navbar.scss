@@ -93,7 +93,7 @@ body {
 
 .nav-menu-body.hidden {
   top: -100px;
-}
+
 
     @include media(sm) {
       font-size: 1em;
@@ -107,7 +107,7 @@ body {
     margin: 0;
     }
 
-  }
+  
   
     p{
       text-decoration: none;
@@ -124,7 +124,7 @@ body {
 }
 
 .rowNavbar{
-  background-color: $lightcolor;
+  background-color: #CCE9F1;
 }
 
 .logo{
