@@ -65,7 +65,7 @@ class WikiCard extends Component {
         this.makeApiCallWikipedia();
     }
 
-    componentWillReceiveProps(newProps){
+    UNSAFE_componentWillReceiveProps(newProps) {
         if (newProps.inputPalabraBuscar != this.state.inputPalabraBuscar) {
             this.makeApiCallWikipedia(newProps.inputPalabraBuscar);
         }
