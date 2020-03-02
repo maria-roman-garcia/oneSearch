@@ -18,10 +18,9 @@ class Navbar extends Component {
     }
 
     render(){
-
-
-            return(
-                <div className='nav-menu '>
+    return(
+                    
+                        <div className='nav-menu '>
                             <div className='nav-menu-body hidden'>
                                 <ul>
                                     <li>TUTORIAL</li>
@@ -29,8 +28,7 @@ class Navbar extends Component {
                                     <li><Modal/></li>
                                 </ul>
                             </div>
-                            <div>
-                            <div id='nav-menu-hamburger'>
+                            <p id='nav-menu-hamburger'>
                                 <span></span>
                             </div>
                             </div>
@@ -44,4 +42,3 @@ class Navbar extends Component {
 }
 
 export default Navbar;
-

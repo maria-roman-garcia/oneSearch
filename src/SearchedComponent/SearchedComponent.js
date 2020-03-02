@@ -7,6 +7,8 @@ import { Link } from 'react-router-dom';
 // import Routes from '../Routes'
 import WikiCard from './WikiCard'
 import Navbar from '../Navbar/Navbar'
+import Twitter from "./Twitter";
+import Otros from './Otros'
 
 //NOTA: los metodos() son funciones pero dentro de objetos{}. Por ejemplo, dentro de un array muchas veces usamos metodos como .pop() porque es una funcion
 //dentro de un objeto array (typeof array = objeto). En el mismo caso de la array, length es una propiedad, no un metodo.
@@ -16,119 +18,110 @@ class SearchedComponent extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            mensajeUsuario: "",
-            infoLlamadaApi: [],
-            inputPalabra: this.props.match.params.palabraBuscada,
-            llamadaApiFoto: ""
+            inputPalabraEscribiendo: this.props.match.params.palabraBuscada,
+            inputPalabraBuscar: this.props.match.params.palabraBuscada,
+            // wikipedia foto
+            llamadaApiFoto: "",
+            // menu wiki twitter y otro
+            namesApisList: [{
+                id: 0,
+                name: 'Wikipedia',
+            }, {
+                id: 1,
+                name: 'Twitter',
+            }, {
+                id: 2,
+                name: 'Otro',
+            }],
+            idApiSelected: 0
         }
     }
 
-    
-    showItems = () => {
-        return this.state.infoLlamadaApi.map((elemento, index) =>
-            <WikiCard
-                indexKey= {index}
-                titulo={elemento.title}
-                snippet={elemento.snippet.replace(/<span class=|"searchmatch|">/g, '').replace(/<\/span>/g, '')}/>
-        );
-    };
-
-    makeApiCall = () => {
+    makeApiCallWikipedia = (palabraBuscarOpcional) => {
 
         // https://es.wikipedia.org/w/api.php?action=query&list=search&srprop=snippet&titles=casa&prop=pageimages&format=json&piprop=original&origin=*&utf8=&srsearch=casa
 
         let primeraFetchUrl = "https://es.wikipedia.org/w/api.php?action=query&list=search&srprop=snippet&titles=";
         let segundaFetchUrl = "&prop=pageimages&format=json&piprop=original&origin=*&utf8=&srsearch=";
 
-        primeraFetchUrl += this.state.inputPalabra;
-        segundaFetchUrl += this.state.inputPalabra;
+        primeraFetchUrl += palabraBuscarOpcional||this.state.inputPalabraBuscar;
+        segundaFetchUrl += palabraBuscarOpcional||this.state.inputPalabraBuscar;
 
         let totalFetchUrl = `${primeraFetchUrl}${segundaFetchUrl}`;
 
-        if (this.state.inputPalabra === "") {
-            this.setState({
-                mensajeUsuario: "Mete una nueva palabra"
-            });
-        } else {
-            this.setState({
-                mensajeUsuario: "Resultados:"
-            });
-            fetch(totalFetchUrl)
-                //fetch actua como si fuera una promesa. Con el .then forzamos a que espere a la respuesta y que sea sincrono
-                .then(fetchInfo => {
-                    //.json() es un metodo que convierte la informacion del argumento (fetchInfo) a formato Json
-                    return fetchInfo.json();
-                })
-                .then(jsonInfo => {
+        fetch(totalFetchUrl)
+            //fetch actua como si fuera una promesa. Con el .then forzamos a que espere a la respuesta y que sea sincrono
+            .then(fetchInfo => {
+                //.json() es un metodo que convierte la informacion del argumento (fetchInfo) a formato Json
+                return fetchInfo.json();
+            })
+            .then(jsonInfo => {
 
-                    const idNumberArray = Object.keys(jsonInfo.query.pages)
-                    const idNumber = idNumberArray[0]
-
-                    if (jsonInfo.query.pages[idNumber].original == undefined) {
-                        this.setState(
-                            //El primer argumento es un objeto en el que vamos a indicar lo que queremos cambiar del estado
-                            //jsonInfo.query.search
-                            {
-                                infoLlamadaApi: [...jsonInfo.query.search],
-                                llamadaApiFoto: ""
-                            },
-                            //El segundo argumento es una funcion call back function. Se va a ejecutar solo cuando el estado se termine de actualizar
-                            () => {
-                                this.showItems();
-                            }
-                        );
-                    } else {
-                        this.setState(
-                            //El primer argumento es un objeto en el que vamos a indicar lo que queremos cambiar del estado
-                            //jsonInfo.query.search
-                            {
-                                infoLlamadaApi: [...jsonInfo.query.search],
-                                llamadaApiFoto: jsonInfo.query.pages[idNumber].original.source
-                            },
-                            //El segundo argumento es una funcion call back function. Se va a ejecutar solo cuando el estado se termine de actualizar
-                            () => {
-                                this.showItems();
-                            }
-                        );
+                const idNumber = Object.keys(jsonInfo.query.pages)[0]
+                this.setState(
+                    
+                    //Cogemos e id de const idNumber, y si es undefined nos lo mete en un objeto vacio.(porque podemos hacer {}.propiedad pero no undefined.propiedad ...que da error) Como resultado final, si es undefined nos carga una imagen por defecto.
+                    //
+                    {
+                        inputPalabraBuscar: palabraBuscarOpcional||this.state.inputPalabraEscribiendo,
+                        llamadaApiFoto: (((jsonInfo.query.pages[idNumber] || {}).original || {}).source || 'https://images.unsplash.com/photo-1573812195421-50a396d17893?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60')
                     }
-                });
-        }
-
+                );
+            });
     };
 
     componentDidMount() {
-        this.makeApiCall();
+        this.makeApiCallWikipedia();
     }
 
     async changeInputText(info) {
         await this.setState({
-            inputPalabra: info,
+            inputPalabraEscribiendo: info,
         });
     }
 
-    fotoRenderizada = () => {
-        if (this.state.llamadaApiFoto === "") {
-            return ('url(https://images.unsplash.com/photo-1573812195421-50a396d17893?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60)')
-        } else {
-            return (`url(${this.state.llamadaApiFoto})`)
+    // en funcion de que id del menu twitter wiki...este seleccionado se muestra una cosa u otra
+    renderSwitch=()=>{
+        switch (this.state.idApiSelected) {
+            case 0:
+                return (
+                    // Palabras encontradas Wikipedia.
+                    <div className="row justify_center">
+                        <WikiCard inputPalabraBuscar={this.state.inputPalabraBuscar} />
+                    </div>
+                )
+            case 1:
+                return (
+                    //Twitter.
+                    <div className="row justify_center">
+                        <Twitter/>
+                    </div>
+                )
+            case 2:
+                return (
+                    //Twitter.
+                    <div className="row justify_center">
+                        <Otros />
+                    </div>
+                )
+
+            default: return <p>No hay resultados</p>
         }
     }
 
     render() {
-        // console.log("renderizado");
-        // console.log("Soy una letra:" + this.state.inputPalabra);
-        // console.log(this.state.infoLlamadaApi);
-        console.log(this.state.llamadaApiFoto)
+        
+        // console.log(this.state.llamadaApiFoto)
 
         return (
-
             // Navbar
+
             <div className="container-fluid searchedComponent" >
                 <div className="row navBar">
                     <div className="col-6 col-md-3">
-                            <Link to="/">
-                                <img src={logo} className="logo" alt="logo" />
-                            </Link>
+                        <Link to="/">
+                            <img src={logo} className="logo" alt="logo" />
+                        </Link>
                     </div>
                     <div className="col-6 col-md-3 order-md-3 hamburgerDiv">
                         {/* <FontAwesomeIcon icon={faBars} className="Icono fa-3x" /> */}
@@ -137,42 +130,44 @@ class SearchedComponent extends Component {
                     <div className="col-12 col-md-6">
                         <div className="row align_center justify_center">
                             <div className="col-12 col-md-6">
-                                <input value={this.state.inputPalabra} onChange={
+                                <input className="inputItem" value={this.state.inputPalabraEscribiendo} onChange={
                                     event => this.changeInputText(event.target.value)
                                 } type="text" />
                             </div>
                             <div className="col-12 col-md-6 buttonDiv">
                                 <button onClick={
-                                    event => this.makeApiCall()
-                                }>ENTER</button>
+                                    event => this.makeApiCallWikipedia(this.state.inputPalabraEscribiendo)
+                                }>BUSCAR</button>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                {/* Div con la imagen de fondo + palabra de la busqueda */}
-                <div className="row divLlamadaApiFoto" style={{ backgroundImage: `${this.fotoRenderizada()}` }}>
+                {/* Div con la imagen de fondo + palabra de la busqueda y el menu de las fuentes de informacion */}
+                <div className="row divLlamadaApiFoto" style={{ backgroundImage: `url(${this.state.llamadaApiFoto})` }}>
                     <div className="filtro">
                         <div className="filtroPalabra justify_center align_center">
-                            <h1 className="palabraLlamadaApiFoto">{this.state.inputPalabra.toUpperCase()}</h1>
+                            <h1 className="palabraLlamadaApiFoto">{this.state.inputPalabraBuscar.toUpperCase()}</h1>
                         </div>
+                        {/* Menu. Hacemos map para pintar cada elemento de la propiedad namesApisList del state */}
                         <div className="row filtroMenu">
-                            <div className="col-4 justify_center selected align_center">
-                                <p>Wikipedia</p>
-                            </div>
-                            <div className="col-4 justify_center align_center">
-                                <p>Twitter</p>
-                            </div>
-                            <div className="col-4 justify_center align_center">
-                                <p>Otra</p>
-                            </div>
+                            {this.state.namesApisList.map(e => {
+                                // el que este seleccionado le añadimos la clase .selected
+                                const classname = "col-4 justify_center align_center" + (this.state.idApiSelected === e.id ? " selected" : "");
+                                return (
+                                    <div className={classname} onClick={() => this.setState({
+                                        idApiSelected: e.id
+                                    })}>
+                                        <p> {e.name}</p>
+                                    </div>
+                                )
+                            })}
                         </div>
                     </div>
                 </div>
-
-                {/* Palabras encontradas */}
-                <div className="row justify_center">
-                    {this.showItems()}
+                
+                <div>
+                    {this.renderSwitch()}
                 </div>
             </div>
         )

@@ -1,0 +1,13 @@
+// ALINEAR, MARGENES Y PADDINGS
+.justify_center {
+    display: flex;
+    justify-content: center;
+}
+
+ .imageWorkingOnIt {
+    margin: 3rem;
+    & img {
+        width: 50vw;
+        border-radius: 70px;
+    }
+}
