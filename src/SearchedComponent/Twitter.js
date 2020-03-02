@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import './Twitter.scss'
 
 class Twitter extends Component {
@@ -11,24 +11,32 @@ class Twitter extends Component {
         }
     }
 
+    showItemsTwitter = () => {
+        return this.state.infoLlamadaApi.map((elemento, index) =>
+            <div className="carta col-11 col-md-5" key={index}>
+                <h1>{elemento}</h1>
+            </div>
+        );
+    };
+
     callAPI(palabra) {
         console.log('llamando API')
         fetch("http://localhost:9000/testAPI/" + palabra)
-            .then(res => res.json())
-            .then(res => this.setState({
-                infoLlamadaApi: res
-            }))
-            .catch(err => err)
-        setTimeout(() => {
+        .then(res => res.json())
+        .then(res => this.setState({ 
+            infoLlamadaApi: res 
+        }))
+        .catch(err => err)
+        setTimeout(()=>{
             console.log(this.state.infoLlamadaApi)
-        }, 2000)
+        },2000)
     }
 
     componentDidMount() {
         this.callAPI(this.state.inputPalabraBuscar);
     }
 
-    componentWillReceiveProps(newProps) {
+    componentWillReceiveProps(newProps){
         if (newProps.inputPalabraBuscar != this.state.inputPalabraBuscar) {
             this.callAPI(newProps.inputPalabraBuscar);
         }
@@ -36,12 +44,10 @@ class Twitter extends Component {
 
 
 
-    render() {
-        return (
-            <div className="twitt">
-                <p>Twitter</p>
-            </div>
-        )
+    render(){
+        return(
+            this.showItemsTwitter()
+        )        
     }
 
 }

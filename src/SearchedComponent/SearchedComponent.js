@@ -44,8 +44,8 @@ class SearchedComponent extends Component {
         let primeraFetchUrl = "https://es.wikipedia.org/w/api.php?action=query&list=search&srprop=snippet&titles=";
         let segundaFetchUrl = "&prop=pageimages&format=json&piprop=original&origin=*&utf8=&srsearch=";
 
-        primeraFetchUrl += palabraBuscarOpcional || this.state.inputPalabraBuscar;
-        segundaFetchUrl += palabraBuscarOpcional || this.state.inputPalabraBuscar;
+        primeraFetchUrl += palabraBuscarOpcional||this.state.inputPalabraBuscar;
+        segundaFetchUrl += palabraBuscarOpcional||this.state.inputPalabraBuscar;
 
         let totalFetchUrl = `${primeraFetchUrl}${segundaFetchUrl}`;
 
@@ -59,11 +59,11 @@ class SearchedComponent extends Component {
 
                 const idNumber = Object.keys(jsonInfo.query.pages)[0]
                 this.setState(
-
+                    
                     //Cogemos e id de const idNumber, y si es undefined nos lo mete en un objeto vacio.(porque podemos hacer {}.propiedad pero no undefined.propiedad ...que da error) Como resultado final, si es undefined nos carga una imagen por defecto.
                     //
                     {
-                        inputPalabraBuscar: palabraBuscarOpcional || this.state.inputPalabraEscribiendo,
+                        inputPalabraBuscar: palabraBuscarOpcional||this.state.inputPalabraEscribiendo,
                         llamadaApiFoto: (((jsonInfo.query.pages[idNumber] || {}).original || {}).source || 'https://images.unsplash.com/photo-1573812195421-50a396d17893?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60')
                     }
                 );
@@ -81,7 +81,7 @@ class SearchedComponent extends Component {
     }
 
     // en funcion de que id del menu twitter wiki...este seleccionado se muestra una cosa u otra
-    renderSwitch = () => {
+    renderSwitch=()=>{
         switch (this.state.idApiSelected) {
             case 0:
                 return (
@@ -94,7 +94,7 @@ class SearchedComponent extends Component {
                 return (
                     //Twitter.
                     <div className="row justify_center">
-                        <Twitter inputPalabraBuscar={this.state.inputPalabraBuscar} />
+                        <Twitter inputPalabraBuscar={this.state.inputPalabraBuscar}/>
                     </div>
                 )
             case 2:
@@ -110,7 +110,7 @@ class SearchedComponent extends Component {
     }
 
     render() {
-
+        
         // console.log(this.state.llamadaApiFoto)
 
         return (
@@ -135,11 +135,11 @@ class SearchedComponent extends Component {
                                 } type="text" />
                             </div>
                             <div className="col-12 col-md-6 buttonDiv">
-                                <Link to={"/resultado-busqueda/" + this.state.inputPalabraEscribiendo}>
-                                    <button onClick={
-                                        event => this.makeApiCallWikipedia(this.state.inputPalabraEscribiendo)
-                                    }>BUSCAR</button>
-                                </Link>
+                            <Link to={"/resultado-busqueda/" + this.state.inputPalabraEscribiendo}>
+                                <button onClick={
+                                    event => this.makeApiCallWikipedia(this.state.inputPalabraEscribiendo)
+                                }>BUSCAR</button>
+                            </Link>
                             </div>
                         </div>
                     </div>
@@ -167,7 +167,7 @@ class SearchedComponent extends Component {
                         </div>
                     </div>
                 </div>
-
+                
                 <div>
                     {this.renderSwitch()}
                 </div>
