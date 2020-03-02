@@ -17,7 +17,7 @@ class WikiCard extends Component {
                 <h1>{elemento.title}</h1>
                 <p>{elemento.snippet.replace(/<span class=|"searchmatch|">/g, '').replace(/<\/span>/g, '')}</p>
                 {/* target = "_blank" hace que nos abra la pagina de wikipedia en una pagina aparte a la nuestra */}
-                <a target="_blank" href={`https://es.wikipedia.org/wiki/${elemento.title}`} >
+                <a target="_blank" rel="noopener noreferrer" href={`https://es.wikipedia.org/wiki/${elemento.title}`} >
                     <button>
                         Ir a Wikipedia
                     </button>
