@@ -19,7 +19,6 @@ class Navbar extends Component {
 
     render() {
         return (
-            <div className='main-container '>
                 <div className='nav-menu '>
                     <div className='nav-menu-body hidden'>
                         <ul>
@@ -31,16 +30,8 @@ class Navbar extends Component {
                     <p id='nav-menu-hamburger'>
                         <span></span>
                     </p>
-                </div>
-
-            </div>
-                
-                        
-                     
-            )
+                </div>)
     }
-
-
 }
 
 export default Navbar;
