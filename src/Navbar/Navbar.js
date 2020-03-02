@@ -1,5 +1,8 @@
 import React, {Component} from 'react'
 import './Navbar.scss'
+import Modal from '../Modal/Modal'
+
+
 
 
 
@@ -22,8 +25,8 @@ class Navbar extends Component {
                             <div className='nav-menu-body hidden'>
                                 <ul>
                                     <li>TUTORIAL</li>
-                                    <li>COLABORA</li>
-                                    <li>SUGERENCIAS</li>
+                                    <li>GITHUB</li>
+                                    <li><Modal/></li>
                                 </ul>
                             </div>
                             <div>
@@ -32,7 +35,8 @@ class Navbar extends Component {
                             </div>
                             </div>
                     <div className='main-container '></div>
-                </div>        
+                </div>
+                     
             )            
     }
 

@@ -6,7 +6,7 @@ $fontcolor: #ffffff;
 
 body {
   padding: 0;
-  maring: 0;
+  margin: 0;
   width: 100%;
 }
 .main-container {
@@ -39,7 +39,7 @@ $fontcolor: #ffffff;
 
 body {
   padding: 0;
-  maring: 0;
+  margin: 0;
   width: 100%;
 }
 .main-container {
@@ -101,32 +101,7 @@ body {
     }
   }
 }
-.nav-menu-body {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 60px; //altura del nav-menu-body
-  background-color: $darkcolor;
-  transition: top ease-in-out 0.5s;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  
-  li { 
-    display: inline-block;
-    margin: 0 20px 0 20px;
-    font-family: 'Roboto', sans-serif;
-    font-size: 1em;
-    color: $fontcolor;
-    
-    p{
-      text-decoration: none;
-      color: $fontcolor;
-    }
-  }
-  
-}
+
 .nav-menu-body.hidden {
   top: -100px;
 }

@@ -27,13 +27,11 @@ class Home extends Component {
         console.log(this.state.inputPalabra)
 
         return (
-            < div className="container-fluid home" >
+           <div className="container-fluid home" >
+
                 <div className="row menu-hamburger">
                     <Navbar />
                 </div>
-            
-            
-
                 <div className="row justify_center">
                     < Link to="/" className="row justify_center">
                         <img src={logo} className="logo" alt="logo" />
@@ -43,18 +41,18 @@ class Home extends Component {
                 <div className="row justify_center">
                     <input className="inputItem " onChange={
                         event => this.changeInputText(event.target.value)
-                    } type="text" placeholder="¿Qué te interesa?"/>
+                    } type="text" placeholder="¿Qué te interesa?" />
                 </div>
                 <div className="row justify_center">
 
                     {
                         this.state.inputPalabra === ""
                             ? <AlertDismissible />
-                            :  <Link onClick={this.completeInput} to={"/resultado-busqueda/" + this.state.inputPalabra}>
-                        <button type="button">ENTER</button>
-                    </Link>
+                            : <Link onClick={this.completeInput} to={"/resultado-busqueda/" + this.state.inputPalabra}>
+                                <button type="button">ENTER</button>
+                            </Link>
                     }
-                   
+
                 </div>
 
                 <div className="row">
@@ -85,6 +83,7 @@ class Home extends Component {
                 </div>
             </div>
         );
+        
     }
 
 }

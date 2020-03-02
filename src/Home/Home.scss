@@ -68,14 +68,14 @@ $smallScreen : 500px;
     border-radius: 50px;
     border-style: none;
     margin: 3rem;
-    width: 60%;
+    width: 30%;
     height: 3rem;
     transition: width 0.4s ease-in-out;
     }
     & .inputItem:focus {
         border: 3px solid lightblue;
         outline: none;
-        width: 100%;
+        width: 50%;
         
     }
     & .Icono {
