@@ -19,7 +19,7 @@ class Navbar extends Component {
     return(            
                         <div className='nav-menu '>
                             <div className='nav-menu-body hidden'>
-                            <Button id="nocolor" className="boton" title="Repositorio en Github de One Search" href={`https://github.com/maria-roman-garcia/oneSearch`} target="_blank" rel="noopener noreferrer">Github</Button>{''}
+                            <Button id="nocolor"  title="Repositorio en Github de One Search" href={`https://github.com/maria-roman-garcia/oneSearch`} target="_blank" rel="noopener noreferrer">Github</Button>{''}
                             <Modal/>
                             </div>
                             <p id='nav-menu-hamburger'>

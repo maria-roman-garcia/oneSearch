@@ -148,21 +148,17 @@ body {
       color: $fontcolor;
     }
   
-}
-  
-  
-  
+}  
 }
 .nav-menu-body.hidden {
   top: -60px;
 }
-
 .rowNavbar{
   background-color: $lightcolor;
 }
-
 #nocolor{
   background-color: transparent;
   border-color: transparent;
+  margin: 0 0 0 0;
 }
 
