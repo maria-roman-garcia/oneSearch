@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import './Twitter.scss'
 
 class Twitter extends Component {
@@ -12,44 +12,44 @@ class Twitter extends Component {
     }
 
     showItemsTwitter = () => {
-        return this.state.infoLlamadaApi.map((elemento, index) =>
-            <div className="carta col-11 col-md-5" key={index}>
-                <h1>{elemento}</h1>
-            </div>
-        );
+
+        console.log(this.state.infoLlamadaApi.statuses[0].text)
+
+        // return (
+        //     this.state.infoLlamadaApi.statuses.map((elemento, index) =>
+        //     <div className="carta col-11 col-md-5" key={index}>
+        //         <p>{elemento.text}</p>
+        //     </div>)
+        // )
     };
 
     callAPI(palabra) {
         console.log('llamando API')
         fetch("http://localhost:9000/testAPI/" + palabra)
-        .then(res => res.json())
-        .then(res => this.setState({ 
-            infoLlamadaApi: res 
-        }))
-        .catch(err => err)
-        setTimeout(()=>{
-            console.log(this.state.infoLlamadaApi)
-        },2000)
+            .then(res => res.json())
+            .then(res => this.setState(
+                {
+                 infoLlamadaApi: res
+                }
+            ))
+            .catch(err => err)
     }
 
     componentDidMount() {
         this.callAPI(this.state.inputPalabraBuscar);
     }
 
-    componentWillReceiveProps(newProps){
+    UNSAFE_componentWillReceiveProps(newProps) {
         if (newProps.inputPalabraBuscar != this.state.inputPalabraBuscar) {
             this.callAPI(newProps.inputPalabraBuscar);
         }
     }
 
-
-
-    render(){
-        return(
-            this.showItemsTwitter()
-        )        
+    render() {
+        return this.state.infoLlamadaApi.length === 0
+        ? null 
+        : `Estoy en el render${this.showItemsTwitter()}`
     }
-
 }
 
 export default Twitter;
