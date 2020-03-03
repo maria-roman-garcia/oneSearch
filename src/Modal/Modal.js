@@ -21,10 +21,9 @@ const ModalExample = props => {
         {/* <ModalHeader toggle={toggle} Contáctanos /> */}
         <ModalBody className="bodyModal">
           Si quieres saber más sobre nosotras, no dudes en visitarnos en nuestro
-          perfil de LinkedIn. <br></br>
-          <a href="http://www.google.com" className="links">María</a> | <a href="http://www.google.com" className="links">Leire</a> | <a href="http://www.google.com" className="links">Natalia</a> 
+          perfil de LinkedIn. <br></br><br></br>
+          {/* <a href="http://www.google.com" className="links">María</a> | <a href="http://www.google.com" className="links">Leire</a> | <a href="http://www.google.com" className="links">Natalia</a>  */}
            <CardItem/>
-           
         </ModalBody>
       </Modal>
       
