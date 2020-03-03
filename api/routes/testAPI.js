@@ -14,11 +14,11 @@ let T = new Twit({
   strictSSL:            true,     // optional - requires SSL certificates to be valid.
 })
 
-router.get("/testAPI/:prueba", function(req, res, next) {
+router.get("/testAPI/:palabra", function(req, res, next) {
 
-  console.log(req.params.prueba)
+  console.log(req.params.palabra)
   // makeTwitterCall(req.params.palabra)
-  T.get('search/tweets', { q: req.params.prueba + ' since:2020-02-1', count: 10, lang: 'es' }, function(err, data, response) {
+  T.get('search/tweets', { q: req.params.palabra + ' since:2020-02-1', count: 10, lang: 'es' }, function(err, data, response) {
     res.send(data);
   });
 });
