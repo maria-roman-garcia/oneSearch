@@ -94,7 +94,7 @@ class SearchedComponent extends Component {
                 return (
                     //Twitter.
                     <div className="row justify_center">
-                        <Twitter/>
+                        <Twitter inputPalabraBuscar={this.state.inputPalabraBuscar}/>
                     </div>
                 )
             case 2:
@@ -135,9 +135,11 @@ class SearchedComponent extends Component {
                                 } type="text" />
                             </div>
                             <div className="col-12 col-md-6 buttonDiv">
+                            <Link to={"/resultado-busqueda/" + this.state.inputPalabraEscribiendo}>
                                 <button onClick={
                                     event => this.makeApiCallWikipedia(this.state.inputPalabraEscribiendo)
                                 }>BUSCAR</button>
+                            </Link>
                             </div>
                         </div>
                     </div>

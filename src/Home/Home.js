@@ -27,7 +27,7 @@ class Home extends Component {
         console.log(this.state.inputPalabra)
 
         return (
-           <div className="container-fluid home" >
+            <div className="container-fluid home" >
 
                 <div className="row menu-hamburger">
                     <Navbar />
@@ -48,7 +48,7 @@ class Home extends Component {
                     {
                         this.state.inputPalabra === ""
                             ? <AlertCard />
-                            : <Link onClick={this.completeInput} to={"/resultado-busqueda/" + this.state.inputPalabra}>
+                            : <Link to={"/resultado-busqueda/" + this.state.inputPalabra}>
                                 <button type="button">ENTER</button>
                             </Link>
                     }
@@ -83,7 +83,6 @@ class Home extends Component {
                 </div>
             </div>
         );
-        
     }
 
 }
