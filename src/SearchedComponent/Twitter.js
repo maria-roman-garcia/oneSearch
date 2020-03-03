@@ -44,8 +44,11 @@ class Twitter extends Component {
                         </div>
                         <div className="col-10">
                             <p className="textoFechaTwitter">{elemento.created_at}</p>
-                            <p>{elemento.text}</p>
+                            <p>{elemento.user.name} dice:</p>
                         </div>
+                    </div>
+                    <div className="row">
+                         <p className="textoTwitter">{elemento.text}</p>
                     </div>
                 </div>)
     }
