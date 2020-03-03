@@ -10,6 +10,7 @@
     border-radius: 8%;
     /* height: 300px; */
     height: 30%;
+    border: none;
 }
 
 .justify_center {
@@ -30,16 +31,34 @@
     height: 350px;
 }
 
-.fotoMaria{
+/* .fotoMaria{
     height: 130px;
+    border-image-outset: 30px 2 45px;
 }
 
-.fotoLeire{
+#fotoLeire{
     height: 130px;
+    border-radius: 20px;
 }
 
-.fotoNatalia{
+#fotoNatalia{
     height: 130px;
+    border-radius: 20px; */
+
+
+#foto1{
+    height: 130px;
+    border-radius: 35px;
+}
+
+#foto2{
+    height: 130px;
+    border-radius: 35px;
+}
+
+#foto3{
+    height: 130px;
+    border-radius: 35px;
 }
 
 

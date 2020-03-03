@@ -33,7 +33,6 @@ class Home extends Component {
 
         return (
             <div className="container-fluid home" >
-
                 <div className="row menu-hamburger">
                     <Navbar />
                 </div>
