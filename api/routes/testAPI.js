@@ -18,7 +18,7 @@ router.get("/testAPI/:palabra", function(req, res, next) {
 
   console.log(req.params.palabra)
   // makeTwitterCall(req.params.palabra)
-  T.get('search/tweets', { q: req.params.palabra + ' since:2020-02-1', count: 10, lang: 'es' }, function(err, data, response) {
+  T.get('search/tweets', { q: req.params.palabra + ' since:2020', count: 10, lang: 'es' }, function(err, data, response) {
     res.send(data);
   });
 });
