@@ -1,0 +1,29 @@
+/* .card_1{
+    float: left;
+    background-color: red;
+}
+.card_2{
+    float: left;
+}
+.card_3{
+    float: left;
+} */
+
+/* .Card{
+    display: flex;
+    
+} */
+/* 
+.card{
+    display: flex;
+    flex-flow: row wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+} */
+
+.card-group{
+    margin: 8px;
+}
+
+
+

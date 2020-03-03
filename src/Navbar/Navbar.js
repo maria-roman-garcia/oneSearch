@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import './Navbar.scss'
-
+import Modal from '../Modal/Modal'
 
 
 
@@ -22,7 +22,7 @@ class Navbar extends Component {
                             <ul>
                                 <li>TUTORIAL</li>
                                 <li>COLABORA</li>
-                                <li>SUGERENCIAS</li>
+                                <Modal/>
                             </ul>
                             </div>
                             <p id='nav-menu-hamburger'>
