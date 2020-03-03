@@ -1,79 +1,43 @@
-// import React from 'react';
-// import {
-//   Card, CardImg, CardText, CardBody,
-//   CardTitle, CardSubtitle, Button
-// } from 'reactstrap';
-
-// const CardItem = (props) => {
-//   return (
-//     <div className="containerCard">
-//       <Card className="">
-//         <CardImg top width="100%" src="https://images.unsplash.com/photo-1437422061949-f6efbde0a471?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Card image cap" />
-//         <CardBody>
-//           <CardTitle>María</CardTitle>
-//           <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
-//           <a href="http://www.google.com"><Button>LinkedIn</Button></a>
-//         </CardBody>
-//       </Card><br></br>
-
-//       <Card className="">
-//         <CardImg top width="100%" src="https://images.unsplash.com/photo-1437422061949-f6efbde0a471?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Card image cap" />
-//         <CardBody>
-//           <CardTitle>Leire</CardTitle>
-//           <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
-//           <a href="http://www.google.com"><Button>LinkedIn</Button></a>
-//         </CardBody>
-//       </Card><br></br>
-
-//       <Card className="">
-//         <CardImg top width="100%" src="https://images.unsplash.com/photo-1437422061949-f6efbde0a471?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Card image cap" />
-//         <CardBody>
-//           <CardTitle>Natalia</CardTitle>
-//           <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
-//           <a href="http://www.google.com"><Button>LinkedIn</Button></a>
-//         </CardBody>
-//       </Card>
-//     </div>
-//   );
-// };
-
-// export default CardItem;
-
 import React from 'react';
-import {
-  Card, Button, CardImg, CardTitle, CardText, CardGroup,
-  CardSubtitle, CardBody
-} from 'reactstrap';
+import {Card, Button, CardImg, CardTitle, CardText, CardGroup, CardSubtitle, CardBody} from 'reactstrap';
+import './CardItem.css';
 const Example = (props) => {
   return (
-    <CardGroup>
-      <Card col-3>
-        <CardImg top width="100%" src="https://images.unsplash.com/photo-1437422061949-f6efbde0a471?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Card image cap" />
+
+
+    <CardGroup id="contenedor">
+      <Card id="tarjeta">
+        <CardImg top height="100%" id="foto1" src="https://media-exp1.licdn.com/dms/image/C4E03AQGg1NtjJ-gGrw/profile-displayphoto-shrink_100_100/0?e=1588809600&v=beta&t=LNohA5StKaxgJ6yoq5YrqSIB9Ecj3ScwSn4xvdJYKsA" alt="Card image cap" />
         <CardBody>
-          <CardTitle>María</CardTitle>
-          {/* <CardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CardText> */}
-          <a href="http://www.google.com"><Button>LinkedIn</Button></a>
+          <CardTitle className="col-12 justify_center">María Román</CardTitle>
+          <div className="justify_center">
+            <a target="_blank" href="https://www.linkedin.com/in/mar%C3%ADarom%C3%A1ngarc%C3%ADa-4587a6184/"><Button id="miBoton">LinkedIn</Button></a>
+          </div>
         </CardBody>
       </Card>
-      <Card>
-        <CardImg top width="100%" src="https://images.unsplash.com/photo-1437422061949-f6efbde0a471?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Card image cap" />
-        <CardBody>
-          <CardTitle>Leire</CardTitle>
-          {/* <CardText>This card has supporting text below as a natural lead-in to additional content.</CardText> */}
-          <a href="http://www.google.com"><Button>LinkedIn</Button></a>
+      <Card id="tarjeta">
+        <CardImg top height="100%" id="foto2" src="https://media-exp1.licdn.com/dms/image/C4D03AQGS2TYO49PNBA/profile-displayphoto-shrink_100_100/0?e=1588809600&v=beta&t=8L36rOfWMqWlEULjaHD7UrmZaYVq0XHT3e6yfMEP2Os" alt="Card image cap" />
+        <CardBody id="bodyCarta">
+          <CardTitle className="col-12 justify_center">Leire Díez</CardTitle>
+          <div className="col-12 justify_center">
+            <a target="_blank" href="https://www.linkedin.com/in/leirediez/"><Button id="miBoton" className="segundaCard">LinkedIn</Button></a>
+          </div>
         </CardBody>
       </Card>
-      <Card>
-        <CardImg top width="100%" src="https://images.unsplash.com/photo-1437422061949-f6efbde0a471?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Card image cap" />
+      <Card id="tarjeta">
+        <CardImg top height="100%" id="foto3"  src="https://media-exp1.licdn.com/dms/image/C4D03AQHyGpvqsFu1pQ/profile-displayphoto-shrink_200_200/0?e=1588809600&v=beta&t=8X4MRM2YB3wQMtagML89UmmyHcDWbtM6OosV3YHQF2E" alt="Card image cap" />
         <CardBody>
-          <CardTitle>Natalia</CardTitle>
-          {/* <CardText>This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</CardText> */}
-          <a href="http://www.google.com"><Button>LinkedIn</Button></a>
+          <CardTitle className="col-12 justify_center">Natalia Tutor</CardTitle>
+          <div className="justify_center">
+            <a target="_blank" href="https://www.linkedin.com/in/nataliatutorg/"><Button id="miBoton">LinkedIn</Button></a>
+          </div>
         </CardBody>
       </Card>
     </CardGroup>
-  );
+   );
 };
-
 export default Example;
+
+
+
 

@@ -1,29 +1,70 @@
-/* .card_1{
-    float: left;
-    background-color: red;
+#miBoton{
+    background-color: #4F91B1;
+    border-style: none;
+    padding: 5px;
+    width: 100px;
 }
-.card_2{
-    float: left;
-}
-.card_3{
-    float: left;
-} */
 
-/* .Card{
-    display: flex;
-    
-} */
-/* 
-.card{
-    display: flex;
-    flex-flow: row wrap;
-    margin-right: -15px;
-    margin-left: -15px;
-} */
-
-.card-group{
-    margin: 8px;
+#tarjeta{
+    margin-left: 10px;
+    border-radius: 8%;
+    /* height: 300px; */
+    height: 30%;
+    border: none;
 }
+
+.justify_center {
+    display: flex;
+    justify-content: center;
+}
+
+.segundaCard{
+    margin-top: 23px;
+}
+
+.CarImg{
+    border-radius: 10px;
+    height: 127px;
+}
+
+#contenedor{
+    height: 350px;
+}
+
+/* .fotoMaria{
+    height: 130px;
+    border-image-outset: 30px 2 45px;
+}
+
+#fotoLeire{
+    height: 130px;
+    border-radius: 20px;
+}
+
+#fotoNatalia{
+    height: 130px;
+    border-radius: 20px; */
+
+
+#foto1{
+    height: 130px;
+    border-radius: 35px;
+}
+
+#foto2{
+    height: 130px;
+    border-radius: 35px;
+}
+
+#foto3{
+    height: 130px;
+    border-radius: 35px;
+}
+
+
+
+
+
 
 
 

@@ -1,7 +1,8 @@
 import React, {Component} from 'react'
+import { Button } from 'reactstrap';
 import './Navbar.scss'
 import Modal from '../Modal/Modal'
-import { Button } from 'reactstrap';
+
 
 
 class Navbar extends Component {
@@ -15,23 +16,18 @@ class Navbar extends Component {
     }
 
     render(){
-    return(
-                    
+    return(            
                         <div className='nav-menu '>
                             <div className='nav-menu-body hidden'>
-
-                            <Button color="secondary">secondary</Button>{' '}
+                            <Button id="nocolor"  title="Repositorio en Github de One Search" href={`https://github.com/maria-roman-garcia/oneSearch`} target="_blank" rel="noopener noreferrer">Github</Button>{''}
                             <Modal/>
-                            
                             </div>
                             <p id='nav-menu-hamburger'>
                                 <span></span>
                             </p>
                         </div>
     )            
-    }
-
-    
+    }    
 }
 
 export default Navbar;

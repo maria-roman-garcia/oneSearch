@@ -132,7 +132,7 @@ class SearchedComponent extends Component {
         return (
             // Navbar
 
-            <div className="container-fluid searchedComponent" >
+            <div className="searchedComponent" >
                 <div className="row navBar">
                     <div className="col-6 col-md-3">
                         <Link to="/">

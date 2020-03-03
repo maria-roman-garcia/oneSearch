@@ -1,7 +1,11 @@
 .boton{
-    margin: 0 0 0 0 ;
-    padding: 5px;
+    margin-top: 50px;
+    padding: 0 5px;
     border-radius: 10%;
+    
+    
 }
 
-
+.bodyModal{
+    height: 360px;
+}

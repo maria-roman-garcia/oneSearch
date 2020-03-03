@@ -12,9 +12,9 @@ const ModalExample = props => {
   const toggle = () => setModal(!modal);
 
   return (
-     <div className= "modalLinks">
+     <div>
       <Button color="info" className="boton" onClick={toggle}>
-        CONTÁCTANOS
+        Contáctanos
         {buttonLabel}
       </Button>
       <Modal isOpen={modal} toggle={toggle} className={className}>
