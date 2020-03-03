@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import './Navbar.scss'
 import Modal from '../Modal/Modal'
-
+import { Button } from 'reactstrap';
 
 
 class Navbar extends Component {
@@ -19,11 +19,10 @@ class Navbar extends Component {
                     
                         <div className='nav-menu '>
                             <div className='nav-menu-body hidden'>
-                            <ul>
-                                <li>TUTORIAL</li>
-                                <li>COLABORA</li>
-                                <Modal/>
-                            </ul>
+
+                            <Button color="secondary">secondary</Button>{' '}
+                            <Modal/>
+                            
                             </div>
                             <p id='nav-menu-hamburger'>
                                 <span></span>
