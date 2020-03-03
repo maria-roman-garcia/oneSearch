@@ -35,7 +35,7 @@ $fontcolor: #ffffff;
 
 body {
   padding: 0;
-  maring: 0;
+  margin: 0;
   width: 100%;
 }
 .main-container {
@@ -103,7 +103,7 @@ body {
   top: 0;
   left: 0;
   width: 100vw;
-  height: 40px; //altura del nav-menu-body
+  height: 50px; //altura del nav-menu-body
   background-color: $darkcolor;
   transition: top ease-in-out 0.5s;
   display: flex;
@@ -161,12 +161,8 @@ body {
   background-color: $lightcolor;
 }
 
-.logo{
-  top: calc(20px + 60px);
-  width: 50%;
-  margin: 18px 0 0 0;
+#nocolor{
+  background-color: transparent;
+  border-color: transparent;
 }
-.btn-info{
-  background-color: none;
-  border-color: none;
-}
+
