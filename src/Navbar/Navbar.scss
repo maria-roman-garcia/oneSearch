@@ -104,6 +104,7 @@ body {
   left: 0;
   width: 100vw;
   height: 50px; //altura del nav-menu-body
+  z-index: 999;
   background-color: $darkcolor;
   transition: top ease-in-out 0.5s;
   display: flex;
@@ -162,3 +163,7 @@ body {
   margin: 0 0 0 0;
 }
 
+#nocolor:hover{
+  background-color: #117a8b;
+  border-radius: 20px;
+}
