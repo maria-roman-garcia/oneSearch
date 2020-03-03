@@ -38,7 +38,15 @@ class Twitter extends Component {
             ? null
             : this.state.infoLlamadaApi.statuses.map((elemento, index) =>
                 <div className="carta col-11 col-md-5" key={index}>
-                    <p>{elemento.text}</p>
+                    <div className="row">
+                        <div className="col-2">
+                            <img className="imgPerfilTwitter" src={elemento.user.profile_image_url_https} alt="img" />
+                        </div>
+                        <div className="col-10">
+                            <p className="textoFechaTwitter">{elemento.created_at}</p>
+                            <p>{elemento.text}</p>
+                        </div>
+                    </div>
                 </div>)
     }
 }
