@@ -11,25 +11,13 @@ class Twitter extends Component {
         }
     }
 
-    showItemsTwitter = () => {
-
-        console.log(this.state.infoLlamadaApi.statuses[0].text)
-
-        // return (
-        //     this.state.infoLlamadaApi.statuses.map((elemento, index) =>
-        //     <div className="carta col-11 col-md-5" key={index}>
-        //         <p>{elemento.text}</p>
-        //     </div>)
-        // )
-    };
-
     callAPI(palabra) {
         console.log('llamando API')
         fetch("http://localhost:9000/testAPI/" + palabra)
             .then(res => res.json())
             .then(res => this.setState(
                 {
-                 infoLlamadaApi: res
+                    infoLlamadaApi: res
                 }
             ))
             .catch(err => err)
@@ -47,8 +35,11 @@ class Twitter extends Component {
 
     render() {
         return this.state.infoLlamadaApi.length === 0
-        ? null 
-        : `Estoy en el render${this.showItemsTwitter()}`
+            ? null
+            : this.state.infoLlamadaApi.statuses.map((elemento, index) =>
+                <div className="carta col-11 col-md-5" key={index}>
+                    <p>{elemento.text}</p>
+                </div>)
     }
 }
 
