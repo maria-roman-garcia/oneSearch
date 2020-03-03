@@ -18,9 +18,14 @@ class Home extends Component {
     };
 
     async changeInputText(info) {
-        await this.setState({
-            inputPalabra: info
-        });
+        if (/[^a-zA-Z0-9\-\/]/.test(info)) {
+            alert('No puedes poner caracteres especiales');
+            return false;
+        } else {
+            await this.setState({
+                inputPalabra: info
+            });
+        }
     }
 
     render() {
