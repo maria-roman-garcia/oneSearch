@@ -20,7 +20,7 @@ class Navbar extends Component {
                         <div className='nav-menu '>
                             <div className='nav-menu-body hidden'>
 
-                            <Button color="secondary">secondary</Button>{' '}
+                            <Button className="boton" color="info" title="Repositorio en Github de One Search" href={`https://github.com/maria-roman-garcia/oneSearch`} target="_blank" rel="noopener noreferrer">Github</Button>{''}
                             <Modal/>
                             
                             </div>
