@@ -14,18 +14,13 @@ import AlertCard from './AlertCard'
 class Home extends Component {
 
     state = {
-        inputPalabra: "",
+        inputPalabra: ""
     };
 
     async changeInputText(info) {
-        if (/[^a-zA-Z0-9\-\/]/.test(info)) {
-            alert('No puedes poner caracteres especiales');
-            return false;
-        } else {
             await this.setState({
-                inputPalabra: info
+                inputPalabra: info.replace(/[^\w\s]/gi, '')
             });
-        }
     }
 
     render() {
