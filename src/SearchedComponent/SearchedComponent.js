@@ -79,14 +79,9 @@ class SearchedComponent extends Component {
     }
 
     async changeInputText(info) {
-        if (/[^a-zA-Z0-9\-\/]/.test(info)) {
-            alert('No puedes poner caracteres especiales');
-            return false;
-        } else {
-            await this.setState({
-                inputPalabraEscribiendo: info,
-            });
-        }
+        await this.setState({
+            inputPalabraEscribiendo: info.replace(/[^\w\s]/gi, '')
+        });
     }
 
     // en funcion de que id del menu twitter wiki...este seleccionado se muestra una cosa u otra
@@ -127,7 +122,8 @@ class SearchedComponent extends Component {
 
     render() {
 
-        // console.log(this.state.llamadaApiFoto)
+        console.log(this.state.inputPalabraBuscar)
+        console.log(this.state.inputPalabraEscribiendo)
 
         return (
             // Navbar
