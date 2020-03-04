@@ -8,7 +8,8 @@ import { Link } from 'react-router-dom';
 import WikiCard from './WikiCard'
 import Navbar from '../Navbar/Navbar'
 import Twitter from "./Twitter";
-import Otros from './Otros'
+import Otros from './Otros';
+import WikiCommons from './WikiCommons'
 
 //NOTA: los metodos() son funciones pero dentro de objetos{}. Por ejemplo, dentro de un array muchas veces usamos metodos como .pop() porque es una funcion
 //dentro de un objeto array (typeof array = objeto). En el mismo caso de la array, length es una propiedad, no un metodo.
@@ -31,6 +32,9 @@ class SearchedComponent extends Component {
                 name: 'Twitter',
             }, {
                 id: 2,
+                name: 'Imagenes',
+            }, {
+                id: 3,
                 name: 'Otro',
             }],
             idApiSelected: 0
@@ -104,7 +108,14 @@ class SearchedComponent extends Component {
                 )
             case 2:
                 return (
-                    //Twitter.
+                    //WikiCommons.
+                    <div className="row justify_center">
+                        <WikiCommons inputPalabraBuscar={this.state.inputPalabraBuscar}/>
+                    </div>
+                )
+            case 3:
+                return (
+                    //Otros.
                     <div className="row justify_center">
                         <Otros />
                     </div>
@@ -160,7 +171,7 @@ class SearchedComponent extends Component {
                         <div className="row filtroMenu">
                             {this.state.namesApisList.map(e => {
                                 // el que este seleccionado le añadimos la clase .selected
-                                const classname = "col-4 justify_center align_center" + (this.state.idApiSelected === e.id ? " selected" : "");
+                                const classname = "col-3 justify_center align_center" + (this.state.idApiSelected === e.id ? " selected" : "");
                                 return (
                                     <div className={classname} onClick={() => this.setState({
                                         idApiSelected: e.id

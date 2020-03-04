@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Modal, ModalHeader, ModalBody } from "reactstrap";
-import { Card, CardTitle, CardText } from 'reactstrap';
+// import { Card, CardTitle, CardText } from 'reactstrap';
 import "./Modal.css";
 import CardItem from './CardItem';
 

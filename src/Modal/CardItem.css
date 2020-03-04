@@ -24,11 +24,11 @@
 
 .CarImg{
     border-radius: 10px;
-    height: 127px;
+    height: 100%;
 }
 
 #contenedor{
-    height: 350px;
+    height: 100%;
 }
 
 /* .fotoMaria{
@@ -47,19 +47,21 @@
 
 
 #foto1{
-    height: 130px;
+    /* height: 130px; */
     border-radius: 35px;
 }
 
 #foto2{
-    height: 130px;
+    /* height: 130px; */
     border-radius: 35px;
 }
 
 #foto3{
-    height: 130px;
+    /* height: 130px; */
     border-radius: 35px;
 }
+
+
 
 
 
