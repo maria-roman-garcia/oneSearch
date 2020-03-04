@@ -1,6 +1,7 @@
 
 import React, { Component } from "react";
-import { isElementOfType } from "react-dom/test-utils";
+import './WikiCommons.scss'
+// import { isElementOfType } from "react-dom/test-utils";
 
 class WikiCommons extends Component {
 
@@ -32,7 +33,6 @@ class WikiCommons extends Component {
             .then(jsonInfo => {
 
                 // Segunda URL API: https://commons.wikimedia.org/w/api.php?action=query&prop=imageinfo&iiprop=url&redirects&format=json&iiurlwidth=250&titles=File:Cherry%20Tomato.JPG
-                console.log(jsonInfo);
 
                 const idNumber = Object.keys(jsonInfo.query.pages)[0].toString();
 
@@ -56,7 +56,7 @@ class WikiCommons extends Component {
                             allImages
                         })
                     })
-                }else{
+                } else {
                     this.setState({
                         allImages: ["https://media.giphy.com/media/S25yCLKmbZOhi/giphy.gif"]
                     })
@@ -77,11 +77,13 @@ class WikiCommons extends Component {
     render() {
         console.log(this.state.allImages)
         return (
-            (this.state.allImages||[]).map(imagen=>{
-                return(
-                    <img src={imagen} alt ="img"/> 
+
+            (this.state.allImages || []).map((imagen, index) => {
+                return (
+                    <img className="imgWikiCommons" src={imagen} key={index} alt="img" />
                 )
             })
+
         )
     }
 }
