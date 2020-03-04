@@ -13,7 +13,7 @@ class Twitter extends Component {
 
     callAPI(palabra) {
         console.log('llamando API')
-        fetch("http://localhost:9000/testAPI/" + palabra)
+        fetch("https://onesearch-backend.herokuapp.com/testAPI/" + palabra)
             .then(res => res.json())
             .then(res => this.setState(
                 {
