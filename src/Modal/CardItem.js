@@ -11,7 +11,7 @@ const Example = (props) => {
         <CardBody>
           <CardTitle className="col-12 justify_center">María Román</CardTitle>
           <div className="justify_center">
-            <a target="_blank" href="https://www.linkedin.com/in/mar%C3%ADarom%C3%A1ngarc%C3%ADa-4587a6184/"><Button id="miBoton">LinkedIn</Button></a>
+            <a target="_blank"  rel="noopener noreferrer" href="https://www.linkedin.com/in/mar%C3%ADarom%C3%A1ngarc%C3%ADa-4587a6184/"><Button id="miBoton">LinkedIn</Button></a>
           </div>
         </CardBody>
       </Card>
@@ -20,7 +20,7 @@ const Example = (props) => {
         <CardBody id="bodyCarta">
           <CardTitle className="col-12 justify_center">Leire Díez</CardTitle>
           <div className="col-12 justify_center">
-            <a target="_blank" href="https://www.linkedin.com/in/leirediez/"><Button id="miBoton" className="segundaCard">LinkedIn</Button></a>
+            <a target="_blank"  rel="noopener noreferrer" href="https://www.linkedin.com/in/leirediez/"><Button id="miBoton" className="segundaCard">LinkedIn</Button></a>
           </div>
         </CardBody>
       </Card>
@@ -29,7 +29,7 @@ const Example = (props) => {
         <CardBody>
           <CardTitle className="col-12 justify_center">Natalia Tutor</CardTitle>
           <div className="justify_center">
-            <a target="_blank" href="https://www.linkedin.com/in/nataliatutorg/"><Button id="miBoton">LinkedIn</Button></a>
+            <a target="_blank"  rel="noopener noreferrer" href="https://www.linkedin.com/in/nataliatutorg/"><Button id="miBoton">LinkedIn</Button></a>
           </div>
         </CardBody>
       </Card>
