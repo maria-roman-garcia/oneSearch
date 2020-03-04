@@ -31,33 +31,15 @@
     height: 100%;
 }
 
-/* .fotoMaria{
-    height: 130px;
-    border-image-outset: 30px 2 45px;
-}
-
-#fotoLeire{
-    height: 130px;
-    border-radius: 20px;
-}
-
-#fotoNatalia{
-    height: 130px;
-    border-radius: 20px; */
-
-
 #foto1{
-    /* height: 130px; */
     border-radius: 35px;
 }
 
 #foto2{
-    /* height: 130px; */
     border-radius: 35px;
 }
 
 #foto3{
-    /* height: 130px; */
     border-radius: 35px;
 }
 
